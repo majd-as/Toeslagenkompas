@@ -1,170 +1,2498 @@
+
 <!doctype html>
-<html lang="nl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#062c40"><title>ToeslagenKompas 2026 — Bereken je toeslagen</title>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#062c40">
+<title>ToeslagenKompas 2026 — Bereken je toeslagen</title>
 <style>
-:root{--navy:#123144;--blue:#0f5974;--teal:#047e74;--mint:#e9f7f3;--bg:#f3f7f8;--line:#d9e5e7;--muted:#617786;--red:#9a3c42;--gold:#966318}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;margin:0;color:var(--navy);background:var(--bg);line-height:1.5}button,input,select{font:inherit}button{cursor:pointer}.wrap{max-width:980px;margin:auto;padding:0 16px}header{background:#fff;border-bottom:1px solid var(--line);padding:19px 0}header .wrap{display:flex;align-items:center;justify-content:space-between;gap:15px}.brand{font-weight:850;font-size:20px;letter-spacing:-.7px}.brand i{font-style:normal;color:var(--teal)}.year{font-size:12px;padding:6px 11px;border-radius:30px;background:#eaf4f4;color:var(--blue);font-weight:700}.hero{padding:28px 0 17px}.eyebrow{text-transform:uppercase;letter-spacing:1.4px;color:var(--teal);font-size:11px;font-weight:800}h1{font-size:clamp(28px,5vw,43px);letter-spacing:-1.3px;line-height:1.13;margin:9px 0}.hero p{color:var(--muted);font-size:14px;max-width:750px;margin:10px 0}.wizard{background:white;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 16px 35px #0e46530c;margin-bottom:130px}.top{padding:23px 26px 14px;border-bottom:1px solid var(--line)}.progress{display:flex;gap:6px}.progress span{flex:1;height:6px;border-radius:6px;background:#e6eeee}.progress span.on{background:var(--teal)}.stepmeta{font-size:12px;color:var(--muted);margin:12px 0 0}.page{padding:24px 26px 30px}.page[hidden], [hidden]{display:none!important}h2{font-size:23px;letter-spacing:-.5px;margin:0 0 5px}h3{margin:22px 0 12px;font-size:17px}.lede{color:var(--muted);font-size:13px;margin:0 0 22px}.benefits{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:13px 0 27px}.benefit-check{position:relative;border:1.5px solid var(--line);border-radius:13px;display:flex;align-items:center;min-height:85px;gap:10px;padding:12px;cursor:pointer;background:white}.benefit-check:has(input:checked){background:#eefaf7;border-color:#0b9687}.benefit-check input{position:absolute;opacity:0;width:1px;height:1px}.benefit-check span:nth-of-type(1){display:grid;gap:3px;min-width:0}.benefit-check b{font-size:14px;overflow-wrap:anywhere}.benefit-check small{font-size:12px;color:var(--muted)}.benefit-check .tick{display:grid;place-items:center;margin-left:auto;width:22px;height:22px;flex:none;border:2px solid #b9cfd0;border-radius:6px;color:transparent}.benefit-check:has(input:checked) .tick{background:var(--teal);border-color:var(--teal);color:white}.benefit-check:focus-within{outline:3px solid #b5e7e0}.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.field{display:flex;flex-direction:column;gap:7px;min-width:0;font-weight:700;font-size:13px}input:not([type=radio]):not([type=checkbox]),select{background:white;border:1px solid #d1dfe2;color:var(--navy);padding:12px 13px;border-radius:11px;min-height:48px;width:100%;min-width:0;font-size:16px;outline:none}input:focus,select:focus{border-color:#0b8c80!important;box-shadow:0 0 0 3px #bfe9e3}.field small,.hint{font-size:12px;font-weight:400;color:var(--muted);line-height:1.5}.question{border:0;padding:0;margin:20px 0}.question legend{font-size:14px;font-weight:750;margin-bottom:7px;padding:0}.question .hint{margin:0 0 9px}.choices{display:flex;gap:9px;flex-wrap:wrap}.choice{position:relative;min-width:96px;flex:1;cursor:pointer}.choice input{position:absolute;opacity:0;width:1px;height:1px}.choice span{display:block;border:1.5px solid var(--line);border-radius:10px;text-align:center;padding:11px 9px;color:#4e6576;font-size:13px;font-weight:750}.choice input:checked+span{background:#e3f8f3;color:#006d64;border-color:#079483;box-shadow:inset 0 0 0 1px #079483}.choice input:focus-visible+span{outline:3px solid #91d9cf}.condition-benefit{border-top:1px solid var(--line);padding:3px 0 12px}.info{border:1px solid #cfe3e7;background:#f1f8fa;border-radius:11px;padding:13px;font-size:12px;color:#456c7c;margin:16px 0}.warning{border:1px solid #ebd2a6;background:#fff9ee;color:#73531b}.error{background:#fff2f1;border:1px solid #f0c7c7;border-radius:11px;padding:13px 14px;margin:0 0 16px;color:#963239;font-weight:700;font-size:13px}.chip{font-size:11px;display:inline-block;padding:5px 9px;border-radius:20px;font-weight:750}.chip.yes{color:#0b7065;background:#dff5ee}.chip.no{color:#9a3641;background:#fbe8ea}.chip.review{color:#98610f;background:#fff1d5}.eligibility-card,.resultcard{border:1px solid var(--line);border-radius:12px;padding:16px;margin:12px 0;background:white}.eligibility-card .hd,.resultcard .hd{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}.eligibility-card p,.resultcard p{margin:8px 0 0;font-size:13px;color:var(--muted)}.calc-section{border-top:1px solid var(--line);margin-top:25px;padding-top:5px}.entry{background:#f8fbfb;border:1px solid var(--line);border-radius:12px;padding:15px;margin:12px 0}.entry .entrytop{display:flex;justify-content:space-between;align-items:center;gap:12px;font-weight:750;font-size:14px;margin-bottom:10px}.add{border:1px solid #b8dad4;background:#e8f7f4;color:#08776c;font-size:13px;font-weight:750;padding:9px 13px;border-radius:9px}.remove{background:#fff0f1;border:0;color:#a03c47;border-radius:8px;padding:6px 9px;font-size:12px}.dock{position:fixed;bottom:0;left:0;right:0;border-top:1px solid #dce7e8;background:rgba(255,255,255,.97);box-shadow:0 -7px 22px #0c3b3e12;z-index:5;padding:13px max(16px,calc((100vw - 948px)/2));display:flex;align-items:center;gap:12px}.dock .count{font-size:12px;color:var(--muted);flex:1}.primary{background:var(--teal);border:0;border-radius:11px;color:white;font-size:14px;font-weight:800;padding:14px 21px;min-height:48px}.secondary{background:white;color:var(--navy);border:1px solid var(--line);border-radius:11px;padding:13px 17px;min-height:48px;font-weight:700}.primary:hover{background:#076a62}.primary:focus-visible,.secondary:focus-visible{outline:3px solid #a0ded5}.result-total{padding:22px;background:#0c3447;color:white;border-radius:15px;margin:19px 0}.big{font-size:clamp(30px,6vw,44px);font-weight:850;letter-spacing:-1px}.resultcard strong.amount{display:block;font-size:28px;letter-spacing:-1px;margin:8px 0}.resultcard .details{font-size:12px;line-height:1.65;color:#557383;border-top:1px solid #e8efef;padding-top:10px;margin-top:10px}.links{padding:0 0 26px;color:#647985;font-size:12px}.links a{color:#096d78}#noscript-warning{margin-top:10px}@media(max-width:600px){.wrap{padding:0 12px}.top{padding:18px 16px 12px}.page{padding:19px 16px 24px}.fields{grid-template-columns:1fr}.benefits{gap:9px}.benefit-check{min-height:90px;padding:11px 9px}.benefit-check b{font-size:12px}.benefit-check small{font-size:10px}.choice{min-width:73px}.choice span{padding:12px 6px}.dock{padding:11px 12px}.dock .count{display:none}.dock button{flex:1}.brand{font-size:18px}.wizard{border-radius:14px}}
-</style></head>
-<body><header><div class="wrap"><div class="brand">ToeslagenKompas<i>.</i></div><div class="year">2026 · Nederland</div></div></header>
-<main class="wrap"><div class="hero"><div class="eyebrow">Persoonlijke berekening · 2026</div><h1>Bereken je toeslagen</h1><p>Beantwoord de vragen, controleer eerst of je waarschijnlijk recht hebt en bereken daarna je geschatte toeslagen. Geen DigiD nodig. Alles blijft op je apparaat.</p></div>
-<noscript><div class="info warning" id="noscript-warning"><strong>JavaScript is uitgeschakeld in deze bestandsvoorvertoning.</strong> De antwoorden kun je selecteren, maar bedragen berekenen kan alleen wanneer dit HTML-bestand in een browser met JavaScript geopend wordt. Een voorvertoning in ChatGPT of Bestanden is niet voldoende.</div></noscript>
-<div class="wizard"><div class="top"><div class="progress" id="progress"><span class="on"></span><span></span><span></span><span></span></div><div class="stepmeta" id="steptext">Stap 1 van 4 · Persoonlijke gegevens</div></div>
-<div class="page" data-step="1"><h2>Jouw situatie</h2><p class="lede">Kies welke toeslagen je wilt berekenen en vul je gegevens voor 2026 in.</p><h3>Welke toeslagen?</h3><div class="benefits"><label class="benefit-check"><input type="checkbox" value="zorg" name="benefit" checked><span><b>Zorgtoeslag</b><small>Zorgverzekering</small></span><span class="tick" aria-hidden="true">✓</span></label><label class="benefit-check"><input type="checkbox" value="huur" name="benefit" checked><span><b>Huurtoeslag</b><small>Kale huur</small></span><span class="tick" aria-hidden="true">✓</span></label><label class="benefit-check"><input type="checkbox" value="opvang" name="benefit" checked><span><b>Kinderopvangtoeslag</b><small>Geregistreerde opvang</small></span><span class="tick" aria-hidden="true">✓</span></label><label class="benefit-check"><input type="checkbox" value="kind" name="benefit" checked><span><b>Kindgebonden budget</b><small>Bijdrage voor kinderen</small></span><span class="tick" aria-hidden="true">✓</span></label></div><h3>Algemene gegevens</h3><div class="fields"><label class="field">Voor welke maand in 2026?<select id="month"><option value="1" >Januari 2026</option><option value="2" >Februari 2026</option><option value="3" >Maart 2026</option><option value="4" >April 2026</option><option value="5" >Mei 2026</option><option value="6" >Juni 2026</option><option value="7" >Juli 2026</option><option value="8" >Augustus 2026</option><option value="9" >September 2026</option><option value="10" selected>Oktober 2026</option><option value="11" >November 2026</option><option value="12" >December 2026</option></select><small>De bedragen gelden voor deze maand bij het opgegeven jaarinkomen.</small></label><label class="field" for="age"><span>Jouw leeftijd in die maand</span><input id="age" type="number" inputmode="decimal" placeholder="Bijv. 32" min="0" max="120" autocomplete="off"></label></div>
-<div id="turn18box" hidden><fieldset class="question" data-question="turn18"><legend>Word je deze maand 18 jaar?</legend><div class="choices"><label class="choice"><input type="radio" name="turn18" value="yes"><span>Ja</span></label><label class="choice"><input type="radio" name="turn18" value="no"><span>Nee</span></label><label class="choice"><input type="radio" name="turn18" value="unsure"><span>Weet ik niet</span></label></div></fieldset></div>
-<fieldset class="question" data-question="partner"><legend>Heb je in deze maand een toeslagpartner?</legend><p class="hint">Een toeslagpartner is niet automatisch iedere huisgenoot.</p><div class="choices"><label class="choice"><input type="radio" name="partner" value="yes"><span>Ja</span></label><label class="choice"><input type="radio" name="partner" value="no"><span>Nee</span></label><label class="choice"><input type="radio" name="partner" value="unsure"><span>Weet ik niet</span></label></div></fieldset>
-<div id="partnerbox" hidden><fieldset class="question" data-question="partnerLegal"><legend>Heeft je toeslagpartner een geldige verblijfsstatus?</legend><div class="choices"><label class="choice"><input type="radio" name="partnerLegal" value="yes"><span>Ja</span></label><label class="choice"><input type="radio" name="partnerLegal" value="no"><span>Nee</span></label><label class="choice"><input type="radio" name="partnerLegal" value="unsure"><span>Weet ik niet</span></label></div></fieldset><fieldset class="question" data-question="partnerFull"><legend>Waren jullie gedurende heel 2026 toeslagpartners?</legend><p class="hint">Bij wijzigingen gedurende het jaar is een exacte berekening ingewikkelder.</p><div class="choices"><label class="choice"><input type="radio" name="partnerFull" value="yes"><span>Ja</span></label><label class="choice"><input type="radio" name="partnerFull" value="no"><span>Nee</span></label><label class="choice"><input type="radio" name="partnerFull" value="unsure"><span>Weet ik niet</span></label></div></fieldset><div class="fields"><label class="field" for="partnerAge"><span>Leeftijd toeslagpartner</span><input id="partnerAge" type="number" inputmode="decimal" placeholder="Bijv. 33" min="0" max="120" autocomplete="off"></label><label class="field" for="partnerWealth"><span>Vermogen toeslagpartner op 1 januari (€)</span><input id="partnerWealth" type="text" inputmode="decimal" placeholder="Bijv. 12000" autocomplete="off"> <small>Niet bij jouw persoonlijke vermogen optellen.</small></label></div></div>
-<fieldset class="question" data-question="resident"><legend>Woon je in Nederland?</legend><div class="choices"><label class="choice"><input type="radio" name="resident" value="yes"><span>Ja</span></label><label class="choice"><input type="radio" name="resident" value="no"><span>Nee</span></label><label class="choice"><input type="radio" name="resident" value="unsure"><span>Weet ik niet</span></label></div></fieldset><fieldset class="question" data-question="legal"><legend>Heb je rechtmatig verblijf in Nederland / een passend verblijfsrecht?</legend><div class="choices"><label class="choice"><input type="radio" name="legal" value="yes"><span>Ja</span></label><label class="choice"><input type="radio" name="legal" value="no"><span>Nee</span></label><label class="choice"><input type="radio" name="legal" value="unsure"><span>Weet ik niet</span></label></div></fieldset>
-<div class="fields"><label class="field" for="income"><span>Gezamenlijk toetsingsinkomen over heel 2026 (€)</span><input id="income" type="text" inputmode="decimal" placeholder="Bijv. 38000" autocomplete="off"> <small>Bij een toeslagpartner: jullie beide jaarinkomens samen. Fiscaal inkomen, niet nettoloon.</small></label><label class="field" for="wealth"><span>Jouw vermogen op 1 januari 2026 (€)</span><input id="wealth" type="text" inputmode="decimal" placeholder="Bijv. 5000" autocomplete="off"> <small>Inclusief vermogen minderjarige kinderen dat aan jou wordt toegerekend; partner afzonderlijk.</small></label></div></div>
-<div class="page" data-step="2" hidden><h2>Controle van de voorwaarden</h2><p class="lede">Alleen de gekozen toeslagen worden gecontroleerd. Een onzeker antwoord betekent geen verzonnen bedrag.</p><section class="condition-benefit" data-benefit="zorg"><h3>Zorgtoeslag</h3><fieldset class="question" data-question="insurance"><legend>Heb je een Nederlandse basiszorgverzekering of een erkende CAK-regeling?</legend><p class="hint">Een losse reisverzekering is niet voldoende.</p><div class="choices"><label class="choice"><input type="radio" name="insurance" value="yes"><span>Ja</span></label><label class="choice"><input type="radio" name="insurance" value="no"><span>Nee</span></label><label class="choice"><input type="radio" name="insurance" value="unsure"><span>Weet ik niet</span></label></div></fieldset><fieldset class="question" data-question="partnerInsured"><legend>Heeft je toeslagpartner ook een Nederlandse basisverzekering?</legend><p class="hint">Zonder die verzekering gelden afwijkende berekeningsregels.</p><div class="choices"><label class="choice"><input type="radio" name="partnerInsured" value="yes"><span>Ja</span></label><label class="choice"><input type="radio" name="partnerInsured" value="no"><span>Nee</span></label><label class="choice"><input type="radio" name="partnerInsured" value="unsure"><span>Weet ik niet</span></label></div></fieldset></section><section class="condition-benefit" data-benefit="huur"><h3>Huurtoeslag</h3><fieldset class="question" data-question="rental"><legend>Huur je deze woning en betaal je zelf huur?</legend><p class="hint">Er moet een echte huurovereenkomst zijn.</p><div class="choices"><label class="choice"><input type="radio" name="rental" value="yes"><span>Ja</span></label><label class="choice"><input type="radio" name="rental" value="no"><span>Nee</span></label><label class="choice"><input type="radio" name="rental" value="unsure"><span>Weet ik niet</span></label></div></fieldset><fieldset class="question" data-question="independent"><legend>Is het een zelfstandige woonruimte?</legend><p class="hint">Een erkende uitzondering voor onzelfstandige woonruimte vereist handmatige beoordeling.</p><div class="choices"><label class="choice"><input type="radio" name="independent" value="yes"><span>Ja</span></label><label class="choice"><input type="radio" name="independent" value="no"><span>Nee</span></label><label class="choice"><input type="radio" name="independent" value="unsure"><span>Weet ik niet</span></label></div></fieldset><fieldset class="question" data-question="registered"><legend>Woon je daar én sta je daar ingeschreven in de BRP?</legend><p class="hint">De inschrijving moet bij het huuradres horen.</p><div class="choices"><label class="choice"><input type="radio" name="registered" value="yes"><span>Ja</span></label><label class="choice"><input type="radio" name="registered" value="no"><span>Nee</span></label><label class="choice"><input type="radio" name="registered" value="unsure"><span>Weet ik niet</span></label></div></fieldset><fieldset class="question" data-question="owner"><legend>Is de woning géén eigendom van je partner of medebewoner?</legend><p class="hint">Kies Ja als geen van hen eigenaar is.</p><div class="choices"><label class="choice"><input type="radio" name="owner" value="yes"><span>Ja</span></label><label class="choice"><input type="radio" name="owner" value="no"><span>Nee</span></label><label class="choice"><input type="radio" name="owner" value="unsure"><span>Weet ik niet</span></label></div></fieldset></section><section class="condition-benefit" data-benefit="opvang"><h3>Kinderopvangtoeslag</h3><fieldset class="question" data-question="registeredCare"><legend>Is de opvang geregistreerd in het LRK?</legend><p class="hint">Bij gastouderopvang moet ook het gastouderbureau geregistreerd zijn.</p><div class="choices"><label class="choice"><input type="radio" name="registeredCare" value="yes"><span>Ja</span></label><label class="choice"><input type="radio" name="registeredCare" value="no"><span>Nee</span></label><label class="choice"><input type="radio" name="registeredCare" value="unsure"><span>Weet ik niet</span></label></div></fieldset><fieldset class="question" data-question="active"><legend>Voldoen jij én een eventuele toeslagpartner aan de werk-, studie- of trajectvoorwaarde?</legend><p class="hint">Ook bepaalde inburgerings- en re-integratietrajecten tellen mee.</p><div class="choices"><label class="choice"><input type="radio" name="active" value="yes"><span>Ja</span></label><label class="choice"><input type="radio" name="active" value="no"><span>Nee</span></label><label class="choice"><input type="radio" name="active" value="unsure"><span>Weet ik niet</span></label></div></fieldset><fieldset class="question" data-question="childLives"><legend>Wonen de kinderen bij jou, of is er erkend co-ouderschap?</legend><p class="hint">Afwijkende gezag- en opvangsituaties moeten apart worden beoordeeld.</p><div class="choices"><label class="choice"><input type="radio" name="childLives" value="yes"><span>Ja</span></label><label class="choice"><input type="radio" name="childLives" value="no"><span>Nee</span></label><label class="choice"><input type="radio" name="childLives" value="unsure"><span>Weet ik niet</span></label></div></fieldset><fieldset class="question" data-question="childCost"><legend>Betaal je werkelijk voor de opvang, inclusief eigen bijdrage?</legend><p class="hint">Bewaar facturen en betalingsbewijzen.</p><div class="choices"><label class="choice"><input type="radio" name="childCost" value="yes"><span>Ja</span></label><label class="choice"><input type="radio" name="childCost" value="no"><span>Nee</span></label><label class="choice"><input type="radio" name="childCost" value="unsure"><span>Weet ik niet</span></label></div></fieldset></section><section class="condition-benefit" data-benefit="kind"><h3>Kindgebonden budget</h3><fieldset class="question" data-question="under18"><legend>Heb je een kind onder de 18 jaar?</legend><p class="hint">Het kind moet in de gekozen maand jonger dan 18 zijn.</p><div class="choices"><label class="choice"><input type="radio" name="under18" value="yes"><span>Ja</span></label><label class="choice"><input type="radio" name="under18" value="no"><span>Nee</span></label><label class="choice"><input type="radio" name="under18" value="unsure"><span>Weet ik niet</span></label></div></fieldset><fieldset class="question" data-question="childBenefit"><legend>Ontvang jij kinderbijslag van de SVB voor dit kind/deze kinderen?</legend><p class="hint">Voor sommige 16- en 17-jarigen zijn uitzonderingen.</p><div class="choices"><label class="choice"><input type="radio" name="childBenefit" value="yes"><span>Ja</span></label><label class="choice"><input type="radio" name="childBenefit" value="no"><span>Nee</span></label><label class="choice"><input type="radio" name="childBenefit" value="unsure"><span>Weet ik niet</span></label></div></fieldset></section><div class="info">De vragen gaan over de gebruikelijke situaties. Internationale, medische en andere bijzondere uitzonderingen vragen soms een officiële beoordeling.</div></div>
-<div class="page" data-step="3" hidden><h2>Voorlopige recht-check</h2><p class="lede">Dit is de controle van je hoofdvoorwaarden. Vul daarna alleen de gegevens in voor toeslagen die berekend kunnen worden.</p><div id="eligibility-summary"></div>
-<section class="calc-section" data-cost-benefit="huur"><h3>Huurtoeslag · je huurwoning</h3><div class="fields"><label class="field" for="rent"><span>Kale huur per maand (€)</span><input id="rent" type="text" inputmode="decimal" placeholder="Bijv. 790" autocomplete="off"> <small>Zonder servicekosten.</small></label><label class="field" for="minorHouse"><span>Aantal minderjarige medebewoners</span><input id="minorHouse" type="number" inputmode="decimal" placeholder="0" min="0" max="30" autocomplete="off"> <small>Kinderen jonger dan 18 op dit adres.</small></label></div><div id="partnerAddressBox" hidden><fieldset class="question" data-question="partnerAtAddress"><legend>Woont je toeslagpartner op het huuradres?</legend><div class="choices"><label class="choice"><input type="radio" name="partnerAtAddress" value="yes"><span>Ja</span></label><label class="choice"><input type="radio" name="partnerAtAddress" value="no"><span>Nee</span></label><label class="choice"><input type="radio" name="partnerAtAddress" value="unsure"><span>Weet ik niet</span></label></div></fieldset></div><div id="youngbox" hidden><fieldset class="question" data-question="age21AtAddress"><legend>Woont er iemand van 21 jaar of ouder op dit adres?</legend><div class="choices"><label class="choice"><input type="radio" name="age21AtAddress" value="yes"><span>Ja</span></label><label class="choice"><input type="radio" name="age21AtAddress" value="no"><span>Nee</span></label><label class="choice"><input type="radio" name="age21AtAddress" value="unsure"><span>Weet ik niet</span></label></div></fieldset><fieldset class="question" data-question="youngException"><legend>Is er een bijzondere uitzondering op de huurgrens voor jongeren?</legend><p class="hint">Bijvoorbeeld vanwege een kind of aangepaste woning.</p><div class="choices"><label class="choice"><input type="radio" name="youngException" value="yes"><span>Ja</span></label><label class="choice"><input type="radio" name="youngException" value="no"><span>Nee</span></label><label class="choice"><input type="radio" name="youngException" value="unsure"><span>Weet ik niet</span></label></div></fieldset></div><fieldset class="question" data-question="minorHasIncome"><legend>Hebben minderjarige medebewoners eigen inkomen dat meetelt?</legend><p class="hint">Als Ja, vul hieronder alleen het inkomen boven hun eventuele vrijstelling in.</p><div class="choices"><label class="choice"><input type="radio" name="minorHasIncome" value="yes"><span>Ja</span></label><label class="choice"><input type="radio" name="minorHasIncome" value="no"><span>Nee</span></label><label class="choice"><input type="radio" name="minorHasIncome" value="unsure"><span>Weet ik niet</span></label></div></fieldset><div id="minorIncomeBox" hidden><label class="field" for="minorExcess"><span>Totaal meetellend inkomen van minderjarigen (€)</span><input id="minorExcess" type="text" inputmode="decimal" placeholder="0" autocomplete="off"> <small>Na toepassing van vrijstelling(en).</small></label></div>
-<h3>Andere meerderjarige medebewoners</h3><p class="hint">Voeg hier huisgenoten toe die geen toeslagpartner en geen onderhuurder zijn. Voor thuiswonende volwassen kinderen kan een inkomensvrijstelling gelden.</p><div id="roomRows"></div><button type="button" class="add" data-add="room">+ Medebewoner toevoegen</button></section>
-<section class="calc-section" data-cost-benefit="kind"><h3>Kindgebonden budget · kinderen</h3><p class="hint">Vul elk kind in voor wie jij het recht hebt op kindgebonden budget.</p><div id="childRows"></div><button type="button" class="add" data-add="child">+ Kind toevoegen</button></section>
-<section class="calc-section" data-cost-benefit="opvang"><h3>Kinderopvangtoeslag · opvangkosten</h3><p class="hint">Per kind/opvangcontract de uren en het werkelijke tarief. Hergebruik hetzelfde kindnummer voor twee contracten van hetzelfde kind.</p><div id="careRows"></div><button type="button" class="add" data-add="care">+ Opvangregel toevoegen</button></section>
-<div class="info">De toeslag wordt berekend voor één maand. De jaaruitkomst kan afwijken bij wijzigingen binnen 2026. Bij een uitzondering wordt <strong>Controle nodig</strong> getoond in plaats van een onbetrouwbaar bedrag.</div></div>
-<div class="page" data-step="4" hidden><h2>Jouw berekening</h2><p class="lede" id="result-month"></p><div id="results"></div><div class="info warning"><strong>Let op:</strong> dit is een indicatie, geen officiële beschikking. Controleer uitzonderingen en definitieve bedragen via <a href="https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/themaoverstijgend/rekenhulpen/toeslagen/proefberekening_toeslagen" target="_blank" rel="noopener">de officiële proefberekening</a>.</div></div></div>
-<div class="links">Onafhankelijke rekenhulp. Gebruikte regels: Dienst Toeslagen 2026 · <a href="https://www.belastingdienst.nl/wps/wcm/connect/nl/toeslagen/" target="_blank" rel="noopener">Officiële informatie</a>.</div></main>
-<div class="dock"><button class="secondary" type="button" id="prev" hidden>← Vorige</button><span class="count" id="dockstep">Stap 1 van 4</span><button class="primary" type="button" id="next">Verder naar voorwaarden →</button></div>
-<script>(() => {
+:root{
+ --navy:#123144;--blue:#0f5974;--teal:#047e74;
+ --mint:#e9f7f3;--bg:#f3f7f8;--line:#d9e5e7;
+ --muted:#617786;--red:#9a3c42;--gold:#966318
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+ margin:0;color:var(--navy);background:var(--bg);line-height:1.5
+}
+button,input,select{font:inherit}
+button{cursor:pointer}
+.wrap{max-width:980px;margin:auto;padding:0 16px}
+header{background:#fff;border-bottom:1px solid var(--line);padding:19px 0}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:15px}
+.brand{font-weight:850;font-size:20px;letter-spacing:-.7px}
+.brand i{font-style:normal;color:var(--teal)}
+.year{
+ font-size:12px;padding:6px 11px;border-radius:30px;
+ background:#eaf4f4;color:var(--blue);font-weight:700
+}
+.hero{padding:28px 0 17px}
+.eyebrow{
+ text-transform:uppercase;letter-spacing:1.4px;
+ color:var(--teal);font-size:11px;font-weight:800
+}
+h1{
+ font-size:clamp(28px,5vw,43px);
+ letter-spacing:-1.3px;line-height:1.13;margin:9px 0
+}
+.hero p{
+ color:var(--muted);font-size:14px;
+ max-width:750px;margin:10px 0
+}
+.wizard{
+ background:white;border:1px solid var(--line);
+ border-radius:20px;overflow:hidden;
+ box-shadow:0 16px 35px #0e46530c;margin-bottom:130px
+}
+.top{padding:23px 26px 14px;border-bottom:1px solid var(--line)}
+.progress{display:flex;gap:6px}
+.progress span{
+ flex:1;height:6px;border-radius:6px;background:#e6eeee
+}
+.progress span.on{background:var(--teal)}
+.stepmeta{font-size:12px;color:var(--muted);margin:12px 0 0}
+.page{padding:24px 26px 30px}
+[hidden],.page[hidden]{display:none!important}
+h2{font-size:23px;letter-spacing:-.5px;margin:0 0 5px}
+h3{margin:22px 0 12px;font-size:17px}
+.lede{color:var(--muted);font-size:13px;margin:0 0 22px}
+.benefits{
+ display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:12px;margin:13px 0 27px
+}
+.benefit-check{
+ position:relative;border:1.5px solid var(--line);
+ border-radius:13px;display:flex;align-items:center;
+ min-height:85px;gap:10px;padding:12px;cursor:pointer;background:white
+}
+.benefit-check:has(input:checked){
+ background:#eefaf7;border-color:#0b9687
+}
+.benefit-check input{
+ position:absolute;opacity:0;width:1px;height:1px
+}
+.benefit-check span:nth-of-type(1){
+ display:grid;gap:3px;min-width:0
+}
+.benefit-check b{font-size:14px;overflow-wrap:anywhere}
+.benefit-check small{font-size:12px;color:var(--muted)}
+.benefit-check .tick{
+ display:grid;place-items:center;margin-left:auto;
+ width:22px;height:22px;flex:none;
+ border:2px solid #b9cfd0;border-radius:6px;color:transparent
+}
+.benefit-check:has(input:checked) .tick{
+ background:var(--teal);border-color:var(--teal);color:white
+}
+.benefit-check:focus-within{outline:3px solid #b5e7e0}
+.fields{
+ display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:14px
+}
+.field{
+ display:flex;flex-direction:column;gap:7px;
+ min-width:0;font-weight:700;font-size:13px
+}
+input:not([type=radio]):not([type=checkbox]),select{
+ background:white;border:1px solid #d1dfe2;color:var(--navy);
+ padding:12px 13px;border-radius:11px;min-height:48px;
+ width:100%;min-width:0;font-size:16px;outline:none
+}
+input:focus,select:focus{
+ border-color:#0b8c80!important;
+ box-shadow:0 0 0 3px #bfe9e3
+}
+.field small,.hint{
+ font-size:12px;font-weight:400;
+ color:var(--muted);line-height:1.5
+}
+.question{border:0;padding:0;margin:20px 0;width:100%;min-width:0}
+.question legend{
+ font-size:14px;font-weight:750;margin-bottom:7px;padding:0
+}
+.question .hint{margin:0 0 9px}
+.choices{display:flex;gap:9px;flex-wrap:wrap}
+.choice{position:relative;min-width:96px;flex:1;cursor:pointer}
+.choice input{
+ position:absolute;opacity:0;width:1px;height:1px
+}
+.choice span{
+ display:block;border:1.5px solid var(--line);
+ border-radius:10px;text-align:center;padding:11px 9px;
+ color:#4e6576;font-size:13px;font-weight:750
+}
+.choice input:checked+span{
+ background:#e3f8f3;color:#006d64;
+ border-color:#079483;box-shadow:inset 0 0 0 1px #079483
+}
+.choice input:focus-visible+span{outline:3px solid #91d9cf}
+.condition-benefit{
+ border-top:1px solid var(--line);
+ padding:3px 0 12px
+}
+.info{
+ border:1px solid #cfe3e7;background:#f1f8fa;
+ border-radius:11px;padding:13px;
+ font-size:12px;color:#456c7c;margin:16px 0
+}
+.warning{
+ border:1px solid #ebd2a6;
+ background:#fff9ee;color:#73531b
+}
+.error{
+ background:#fff2f1;border:1px solid #f0c7c7;
+ border-radius:11px;padding:13px 14px;margin:0 0 16px;
+ color:#963239;font-weight:700;font-size:13px
+}
+.chip{
+ font-size:11px;display:inline-block;
+ padding:5px 9px;border-radius:20px;font-weight:750
+}
+.chip.yes{color:#0b7065;background:#dff5ee}
+.chip.no{color:#9a3641;background:#fbe8ea}
+.chip.review{color:#98610f;background:#fff1d5}
+.eligibility-card,.resultcard{
+ border:1px solid var(--line);border-radius:12px;
+ padding:16px;margin:12px 0;background:white
+}
+.eligibility-card .hd,.resultcard .hd{
+ display:flex;justify-content:space-between;
+ gap:10px;align-items:center;flex-wrap:wrap
+}
+.eligibility-card p,.resultcard p{
+ margin:8px 0 0;font-size:13px;color:var(--muted)
+}
+.calc-section{
+ border-top:1px solid var(--line);
+ margin-top:25px;padding-top:5px
+}
+.entry{
+ background:#f8fbfb;border:1px solid var(--line);
+ border-radius:12px;padding:15px;margin:12px 0
+}
+.entry .entrytop{
+ display:flex;justify-content:space-between;
+ align-items:center;gap:12px;font-weight:750;
+ font-size:14px;margin-bottom:10px
+}
+.add{
+ border:1px solid #b8dad4;background:#e8f7f4;
+ color:#08776c;font-size:13px;font-weight:750;
+ padding:9px 13px;border-radius:9px
+}
+.remove{
+ background:#fff0f1;border:0;color:#a03c47;
+ border-radius:8px;padding:6px 9px;font-size:12px
+}
+.dock{
+ position:fixed;bottom:0;left:0;right:0;
+ border-top:1px solid #dce7e8;
+ background:rgba(255,255,255,.97);
+ box-shadow:0 -7px 22px #0c3b3e12;
+ z-index:5;
+ padding:13px max(16px,calc((100vw - 948px)/2));
+ padding-bottom:max(13px,env(safe-area-inset-bottom));
+ display:flex;align-items:center;gap:12px
+}
+.dock .count{font-size:12px;color:var(--muted);flex:1}
+.primary{
+ background:var(--teal);border:0;border-radius:11px;
+ color:white;font-size:14px;font-weight:800;
+ padding:14px 21px;min-height:48px
+}
+.secondary{
+ background:white;color:var(--navy);
+ border:1px solid var(--line);border-radius:11px;
+ padding:13px 17px;min-height:48px;font-weight:700
+}
+.primary:hover{background:#076a62}
+.primary:focus-visible,.secondary:focus-visible{
+ outline:3px solid #a0ded5
+}
+.result-total{
+ padding:22px;background:#0c3447;
+ color:white;border-radius:15px;margin:19px 0
+}
+.big{
+ font-size:clamp(30px,6vw,44px);
+ font-weight:850;letter-spacing:-1px
+}
+.resultcard strong.amount{
+ display:block;font-size:28px;
+ letter-spacing:-1px;margin:8px 0
+}
+.resultcard .details{
+ font-size:12px;line-height:1.65;
+ color:#557383;border-top:1px solid #e8efef;
+ padding-top:10px;margin-top:10px
+}
+.links{padding:0 0 26px;color:#647985;font-size:12px}
+.links a{color:#096d78}
+#noscript-warning{margin-top:10px}
+@media(max-width:600px){
+ .wrap{padding:0 12px}
+ .top{padding:18px 16px 12px}
+ .page{padding:19px 16px 24px}
+ .fields{grid-template-columns:1fr}
+ .benefits{gap:9px}
+ .benefit-check{min-height:90px;padding:11px 9px}
+ .benefit-check b{font-size:12px}
+ .benefit-check small{font-size:10px}
+ .choice{min-width:73px}
+ .choice span{padding:12px 6px}
+ .dock{padding:11px 12px;padding-bottom:max(11px,env(safe-area-inset-bottom))}
+ .dock .count{display:none}
+ .dock button{flex:1}
+ .brand{font-size:18px}
+ .wizard{border-radius:14px}
+}
+</style>
+</head>
+
+<body>
+<header>
+ <div class="wrap">
+  <div class="brand">ToeslagenKompas<i>.</i></div>
+  <div class="year">2026 · Nederland</div>
+ </div>
+</header>
+
+<main class="wrap">
+ <div class="hero">
+  <div class="eyebrow">Persoonlijke berekening · 2026</div>
+  <h1>Bereken je toeslagen</h1>
+  <p>
+   Kies zelf welke toeslagen je wilt berekenen.
+   Beantwoord alleen de relevante vragen, controleer
+   of je waarschijnlijk recht hebt en bekijk je
+   geschatte maandbedragen. Geen DigiD nodig.
+   Alles blijft op je apparaat.
+  </p>
+ </div>
+
+ <noscript>
+  <div class="info warning" id="noscript-warning">
+   <strong>JavaScript is uitgeschakeld.</strong>
+   Open deze pagina in een browser met JavaScript
+   om de berekening te gebruiken.
+  </div>
+ </noscript>
+
+ <div class="wizard">
+  <div class="top">
+   <div class="progress" id="progress">
+    <span class="on"></span><span></span><span></span><span></span>
+   </div>
+   <div class="stepmeta" id="steptext">
+    Stap 1 van 4 · Persoonlijke gegevens
+   </div>
+  </div>
+
+  <!-- STAP 1 -->
+  <div class="page" data-step="1">
+   <h2>Jouw situatie</h2>
+   <p class="lede">
+    Kies welke toeslagen je wilt berekenen en
+    vul de gegevens voor 2026 in.
+   </p>
+
+   <h3>Welke toeslagen wil je berekenen?</h3>
+
+   <div class="benefits">
+    <label class="benefit-check">
+     <input type="checkbox" value="zorg" name="benefit">
+     <span><b>Zorgtoeslag</b><small>Zorgverzekering</small></span>
+     <span class="tick" aria-hidden="true">✓</span>
+    </label>
+
+    <label class="benefit-check">
+     <input type="checkbox" value="huur" name="benefit">
+     <span><b>Huurtoeslag</b><small>Kale huur</small></span>
+     <span class="tick" aria-hidden="true">✓</span>
+    </label>
+
+    <label class="benefit-check">
+     <input type="checkbox" value="opvang" name="benefit">
+     <span><b>Kinderopvangtoeslag</b><small>Geregistreerde opvang</small></span>
+     <span class="tick" aria-hidden="true">✓</span>
+    </label>
+
+    <label class="benefit-check">
+     <input type="checkbox" value="kind" name="benefit">
+     <span><b>Kindgebonden budget</b><small>Bijdrage voor kinderen</small></span>
+     <span class="tick" aria-hidden="true">✓</span>
+    </label>
+   </div>
+
+   <h3>Algemene gegevens</h3>
+
+   <div class="fields">
+    <label class="field">
+     Voor welke maand in 2026?
+     <select id="month">
+      <option value="1">Januari 2026</option>
+      <option value="2">Februari 2026</option>
+      <option value="3">Maart 2026</option>
+      <option value="4">April 2026</option>
+      <option value="5">Mei 2026</option>
+      <option value="6">Juni 2026</option>
+      <option value="7">Juli 2026</option>
+      <option value="8">Augustus 2026</option>
+      <option value="9">September 2026</option>
+      <option value="10" selected>Oktober 2026</option>
+      <option value="11">November 2026</option>
+      <option value="12">December 2026</option>
+     </select>
+     <small>
+      De uitkomst geldt voor de gekozen maand.
+     </small>
+    </label>
+
+    <label class="field" for="age" id="ageField">
+     <span>Jouw leeftijd in die maand</span>
+     <input id="age" type="number" inputmode="numeric"
+      placeholder="Bijv. 32" min="0" max="120">
+    </label>
+   </div>
+
+   <div id="turn18box" hidden>
+    <fieldset class="question" data-question="turn18">
+     <legend>Word je deze maand 18 jaar?</legend>
+     <div class="choices">
+      <label class="choice"><input type="radio" name="turn18" value="yes"><span>Ja</span></label>
+      <label class="choice"><input type="radio" name="turn18" value="no"><span>Nee</span></label>
+      <label class="choice"><input type="radio" name="turn18" value="unsure"><span>Weet ik niet</span></label>
+     </div>
+    </fieldset>
+   </div>
+
+   <fieldset class="question" data-question="partner">
+    <legend>Heb je in deze maand een toeslagpartner?</legend>
+    <p class="hint">
+     Een toeslagpartner is niet automatisch iedere huisgenoot.
+    </p>
+    <div class="choices">
+     <label class="choice"><input type="radio" name="partner" value="yes"><span>Ja</span></label>
+     <label class="choice"><input type="radio" name="partner" value="no"><span>Nee</span></label>
+     <label class="choice"><input type="radio" name="partner" value="unsure"><span>Weet ik niet</span></label>
+    </div>
+   </fieldset>
+
+   <div id="partnerbox" hidden>
+    <fieldset class="question" data-question="partnerLegal">
+     <legend>Heeft je toeslagpartner een geldige verblijfsstatus?</legend>
+     <div class="choices">
+      <label class="choice"><input type="radio" name="partnerLegal" value="yes"><span>Ja</span></label>
+      <label class="choice"><input type="radio" name="partnerLegal" value="no"><span>Nee</span></label>
+      <label class="choice"><input type="radio" name="partnerLegal" value="unsure"><span>Weet ik niet</span></label>
+     </div>
+    </fieldset>
+
+    <fieldset class="question" data-question="partnerFull">
+     <legend>Waren jullie gedurende heel 2026 toeslagpartners?</legend>
+     <p class="hint">
+      Bij wijzigingen gedurende het jaar is de berekening ingewikkelder.
+     </p>
+     <div class="choices">
+      <label class="choice"><input type="radio" name="partnerFull" value="yes"><span>Ja</span></label>
+      <label class="choice"><input type="radio" name="partnerFull" value="no"><span>Nee</span></label>
+      <label class="choice"><input type="radio" name="partnerFull" value="unsure"><span>Weet ik niet</span></label>
+     </div>
+    </fieldset>
+
+    <div class="fields">
+     <label class="field" for="partnerAge" id="partnerAgeField">
+      <span>Leeftijd toeslagpartner</span>
+      <input id="partnerAge" type="number" inputmode="numeric"
+       placeholder="Bijv. 33" min="0" max="120">
+     </label>
+
+     <label class="field" for="partnerWealth" id="partnerWealthField">
+      <span>Vermogen toeslagpartner op 1 januari (€)</span>
+      <input id="partnerWealth" type="text" inputmode="decimal"
+       placeholder="Bijv. 12000">
+      <small>Niet bij jouw persoonlijke vermogen optellen.</small>
+     </label>
+    </div>
+   </div>
+
+   <fieldset class="question" data-question="resident">
+    <legend>Woon je in Nederland?</legend>
+    <div class="choices">
+     <label class="choice"><input type="radio" name="resident" value="yes"><span>Ja</span></label>
+     <label class="choice"><input type="radio" name="resident" value="no"><span>Nee</span></label>
+     <label class="choice"><input type="radio" name="resident" value="unsure"><span>Weet ik niet</span></label>
+    </div>
+   </fieldset>
+
+   <fieldset class="question" data-question="legal">
+    <legend>Heb je rechtmatig verblijf in Nederland / een passend verblijfsrecht?</legend>
+    <div class="choices">
+     <label class="choice"><input type="radio" name="legal" value="yes"><span>Ja</span></label>
+     <label class="choice"><input type="radio" name="legal" value="no"><span>Nee</span></label>
+     <label class="choice"><input type="radio" name="legal" value="unsure"><span>Weet ik niet</span></label>
+    </div>
+   </fieldset>
+
+   <div class="fields">
+    <label class="field" for="income">
+     <span>Gezamenlijk toetsingsinkomen over heel 2026 (€)</span>
+     <input id="income" type="text" inputmode="decimal"
+      placeholder="Bijv. 38000">
+     <small>
+      Bij een toeslagpartner: jullie beide jaarinkomens samen.
+      Fiscaal inkomen, niet nettoloon.
+     </small>
+    </label>
+
+    <label class="field" for="wealth" id="wealthField">
+     <span>Jouw vermogen op 1 januari 2026 (€)</span>
+     <input id="wealth" type="text" inputmode="decimal"
+      placeholder="Bijv. 5000">
+     <small>
+      Inclusief vermogen minderjarige kinderen dat aan jou
+      wordt toegerekend; partner afzonderlijk.
+     </small>
+    </label>
+   </div>
+  </div>
+
+  <!-- STAP 2 -->
+  <div class="page" data-step="2" hidden>
+   <h2>Controle van de voorwaarden</h2>
+   <p class="lede">
+    Alleen de voorwaarden van de door jou gekozen
+    toeslagen worden getoond.
+   </p>
+
+   <section class="condition-benefit" data-benefit="zorg">
+    <h3>Zorgtoeslag</h3>
+
+    <fieldset class="question" data-question="insurance">
+     <legend>Heb je een Nederlandse basiszorgverzekering of een erkende CAK-regeling?</legend>
+     <p class="hint">Een losse reisverzekering is niet voldoende.</p>
+     <div class="choices">
+      <label class="choice"><input type="radio" name="insurance" value="yes"><span>Ja</span></label>
+      <label class="choice"><input type="radio" name="insurance" value="no"><span>Nee</span></label>
+      <label class="choice"><input type="radio" name="insurance" value="unsure"><span>Weet ik niet</span></label>
+     </div>
+    </fieldset>
+
+    <fieldset class="question" data-question="partnerInsured">
+     <legend>Heeft je toeslagpartner ook een Nederlandse basisverzekering?</legend>
+     <p class="hint">Zonder die verzekering gelden afwijkende berekeningsregels.</p>
+     <div class="choices">
+      <label class="choice"><input type="radio" name="partnerInsured" value="yes"><span>Ja</span></label>
+      <label class="choice"><input type="radio" name="partnerInsured" value="no"><span>Nee</span></label>
+      <label class="choice"><input type="radio" name="partnerInsured" value="unsure"><span>Weet ik niet</span></label>
+     </div>
+    </fieldset>
+   </section>
+
+   <section class="condition-benefit" data-benefit="huur">
+    <h3>Huurtoeslag</h3>
+
+    <fieldset class="question" data-question="rental">
+     <legend>Huur je deze woning en betaal je zelf huur?</legend>
+     <p class="hint">Er moet een echte huurovereenkomst zijn.</p>
+     <div class="choices">
+      <label class="choice"><input type="radio" name="rental" value="yes"><span>Ja</span></label>
+      <label class="choice"><input type="radio" name="rental" value="no"><span>Nee</span></label>
+      <label class="choice"><input type="radio" name="rental" value="unsure"><span>Weet ik niet</span></label>
+     </div>
+    </fieldset>
+
+    <fieldset class="question" data-question="independent">
+     <legend>Is het een zelfstandige woonruimte?</legend>
+     <p class="hint">
+      Een erkende uitzondering voor onzelfstandige woonruimte
+      vereist handmatige beoordeling.
+     </p>
+     <div class="choices">
+      <label class="choice"><input type="radio" name="independent" value="yes"><span>Ja</span></label>
+      <label class="choice"><input type="radio" name="independent" value="no"><span>Nee</span></label>
+      <label class="choice"><input type="radio" name="independent" value="unsure"><span>Weet ik niet</span></label>
+     </div>
+    </fieldset>
+
+    <fieldset class="question" data-question="registered">
+     <legend>Woon je daar én sta je daar ingeschreven in de BRP?</legend>
+     <div class="choices">
+      <label class="choice"><input type="radio" name="registered" value="yes"><span>Ja</span></label>
+      <label class="choice"><input type="radio" name="registered" value="no"><span>Nee</span></label>
+      <label class="choice"><input type="radio" name="registered" value="unsure"><span>Weet ik niet</span></label>
+     </div>
+    </fieldset>
+
+    <fieldset class="question" data-question="owner">
+     <legend>Is de woning géén eigendom van je partner of medebewoner?</legend>
+     <p class="hint">Kies Ja als geen van hen eigenaar is.</p>
+     <div class="choices">
+      <label class="choice"><input type="radio" name="owner" value="yes"><span>Ja</span></label>
+      <label class="choice"><input type="radio" name="owner" value="no"><span>Nee</span></label>
+      <label class="choice"><input type="radio" name="owner" value="unsure"><span>Weet ik niet</span></label>
+     </div>
+    </fieldset>
+   </section>
+
+   <section class="condition-benefit" data-benefit="opvang">
+    <h3>Kinderopvangtoeslag</h3>
+
+    <fieldset class="question" data-question="registeredCare">
+     <legend>Is de opvang geregistreerd in het LRK?</legend>
+     <p class="hint">Bij gastouderopvang moet ook het gastouderbureau geregistreerd zijn.</p>
+     <div class="choices">
+      <label class="choice"><input type="radio" name="registeredCare" value="yes"><span>Ja</span></label>
+      <label class="choice"><input type="radio" name="registeredCare" value="no"><span>Nee</span></label>
+      <label class="choice"><input type="radio" name="registeredCare" value="unsure"><span>Weet ik niet</span></label>
+     </div>
+    </fieldset>
+
+    <fieldset class="question" data-question="active">
+     <legend>Voldoen jij én een eventuele toeslagpartner aan de werk-, studie- of trajectvoorwaarde?</legend>
+     <div class="choices">
+      <label class="choice"><input type="radio" name="active" value="yes"><span>Ja</span></label>
+      <label class="choice"><input type="radio" name="active" value="no"><span>Nee</span></label>
+      <label class="choice"><input type="radio" name="active" value="unsure"><span>Weet ik niet</span></label>
+     </div>
+    </fieldset>
+
+    <fieldset class="question" data-question="childLives">
+     <legend>Wonen de kinderen bij jou, of is er erkend co-ouderschap?</legend>
+     <div class="choices">
+      <label class="choice"><input type="radio" name="childLives" value="yes"><span>Ja</span></label>
+      <label class="choice"><input type="radio" name="childLives" value="no"><span>Nee</span></label>
+      <label class="choice"><input type="radio" name="childLives" value="unsure"><span>Weet ik niet</span></label>
+     </div>
+    </fieldset>
+
+    <fieldset class="question" data-question="childCost">
+     <legend>Betaal je werkelijk voor de opvang, inclusief eigen bijdrage?</legend>
+     <div class="choices">
+      <label class="choice"><input type="radio" name="childCost" value="yes"><span>Ja</span></label>
+      <label class="choice"><input type="radio" name="childCost" value="no"><span>Nee</span></label>
+      <label class="choice"><input type="radio" name="childCost" value="unsure"><span>Weet ik niet</span></label>
+     </div>
+    </fieldset>
+   </section>
+
+   <section class="condition-benefit" data-benefit="kind">
+    <h3>Kindgebonden budget</h3>
+
+    <fieldset class="question" data-question="under18">
+     <legend>Heb je een kind onder de 18 jaar?</legend>
+     <div class="choices">
+      <label class="choice"><input type="radio" name="under18" value="yes"><span>Ja</span></label>
+      <label class="choice"><input type="radio" name="under18" value="no"><span>Nee</span></label>
+      <label class="choice"><input type="radio" name="under18" value="unsure"><span>Weet ik niet</span></label>
+     </div>
+    </fieldset>
+
+    <fieldset class="question" data-question="childBenefit">
+     <legend>Ontvang jij kinderbijslag van de SVB voor dit kind of deze kinderen?</legend>
+     <p class="hint">Voor sommige 16- en 17-jarigen zijn uitzonderingen.</p>
+     <div class="choices">
+      <label class="choice"><input type="radio" name="childBenefit" value="yes"><span>Ja</span></label>
+      <label class="choice"><input type="radio" name="childBenefit" value="no"><span>Nee</span></label>
+      <label class="choice"><input type="radio" name="childBenefit" value="unsure"><span>Weet ik niet</span></label>
+     </div>
+    </fieldset>
+   </section>
+
+   <div class="info">
+    De vragen gaan over gebruikelijke situaties.
+    Bij internationale of bijzondere omstandigheden kan
+    een officiële beoordeling nodig zijn.
+   </div>
+  </div>
+
+  <!-- STAP 3 -->
+  <div class="page" data-step="3" hidden>
+   <h2>Voorlopige recht-check</h2>
+   <p class="lede">
+    Hieronder zie je de uitkomst van de hoofdvoorwaarden.
+    Vul alleen extra gegevens in voor toeslagen die berekend kunnen worden.
+   </p>
+
+   <div id="eligibility-summary"></div>
+
+   <section class="calc-section" data-cost-benefit="huur" hidden>
+    <h3>Huurtoeslag · je huurwoning</h3>
+
+    <div class="fields">
+     <label class="field" for="rent">
+      <span>Kale huur per maand (€)</span>
+      <input id="rent" type="text" inputmode="decimal"
+       placeholder="Bijv. 790">
+      <small>Zonder servicekosten.</small>
+     </label>
+
+     <label class="field" for="minorHouse">
+      <span>Aantal minderjarige medebewoners</span>
+      <input id="minorHouse" type="number" inputmode="numeric"
+       min="0" max="30" value="0">
+     </label>
+    </div>
+
+    <div id="partnerAddressBox" hidden>
+     <fieldset class="question" data-question="partnerAtAddress">
+      <legend>Woont je toeslagpartner op het huuradres?</legend>
+      <div class="choices">
+       <label class="choice"><input type="radio" name="partnerAtAddress" value="yes"><span>Ja</span></label>
+       <label class="choice"><input type="radio" name="partnerAtAddress" value="no"><span>Nee</span></label>
+       <label class="choice"><input type="radio" name="partnerAtAddress" value="unsure"><span>Weet ik niet</span></label>
+      </div>
+     </fieldset>
+    </div>
+
+    <div id="youngbox" hidden>
+     <fieldset class="question" data-question="age21AtAddress">
+      <legend>Woont er iemand van 21 jaar of ouder op dit adres?</legend>
+      <div class="choices">
+       <label class="choice"><input type="radio" name="age21AtAddress" value="yes"><span>Ja</span></label>
+       <label class="choice"><input type="radio" name="age21AtAddress" value="no"><span>Nee</span></label>
+       <label class="choice"><input type="radio" name="age21AtAddress" value="unsure"><span>Weet ik niet</span></label>
+      </div>
+     </fieldset>
+
+     <fieldset class="question" data-question="youngException">
+      <legend>Is er een bijzondere uitzondering op de huurgrens voor jongeren?</legend>
+      <p class="hint">Bijvoorbeeld vanwege een kind of aangepaste woning.</p>
+      <div class="choices">
+       <label class="choice"><input type="radio" name="youngException" value="yes"><span>Ja</span></label>
+       <label class="choice"><input type="radio" name="youngException" value="no"><span>Nee</span></label>
+       <label class="choice"><input type="radio" name="youngException" value="unsure"><span>Weet ik niet</span></label>
+      </div>
+     </fieldset>
+    </div>
+
+    <fieldset class="question" data-question="minorHasIncome">
+     <legend>Hebben minderjarige medebewoners eigen inkomen dat meetelt?</legend>
+     <div class="choices">
+      <label class="choice"><input type="radio" name="minorHasIncome" value="yes"><span>Ja</span></label>
+      <label class="choice"><input type="radio" name="minorHasIncome" value="no"><span>Nee</span></label>
+      <label class="choice"><input type="radio" name="minorHasIncome" value="unsure"><span>Weet ik niet</span></label>
+     </div>
+    </fieldset>
+
+    <div id="minorIncomeBox" hidden>
+     <label class="field" for="minorExcess">
+      <span>Totaal meetellend inkomen van minderjarigen (€)</span>
+      <input id="minorExcess" type="text" inputmode="decimal"
+       placeholder="0">
+      <small>Na toepassing van eventuele vrijstellingen.</small>
+     </label>
+    </div>
+
+    <h3>Andere meerderjarige medebewoners</h3>
+    <p class="hint">
+     Voeg huisgenoten toe die geen toeslagpartner en geen
+     onderhuurder zijn. Voor thuiswonende volwassen kinderen
+     kan een inkomensvrijstelling gelden.
+    </p>
+    <div id="roomRows"></div>
+    <button type="button" class="add" data-add="room">
+     + Medebewoner toevoegen
+    </button>
+   </section>
+
+   <section class="calc-section" data-cost-benefit="kind" hidden>
+    <h3>Kindgebonden budget · kinderen</h3>
+    <p class="hint">
+     Vul elk kind in voor wie jij recht hebt op kindgebonden budget.
+    </p>
+    <div id="childRows"></div>
+    <button type="button" class="add" data-add="child">
+     + Kind toevoegen
+    </button>
+   </section>
+
+   <section class="calc-section" data-cost-benefit="opvang" hidden>
+    <h3>Kinderopvangtoeslag · opvangkosten</h3>
+    <p class="hint">
+     Vul per kind en opvangcontract de uren en het werkelijke tarief in.
+     Gebruik hetzelfde kindnummer voor twee contracten van hetzelfde kind.
+    </p>
+    <div id="careRows"></div>
+    <button type="button" class="add" data-add="care">
+     + Opvangregel toevoegen
+    </button>
+   </section>
+
+   <div class="info">
+    De uitkomst is een schatting voor de gekozen maand.
+    Wijzigingen binnen 2026 en uitzonderingen kunnen
+    invloed hebben op het uiteindelijke bedrag.
+   </div>
+  </div>
+
+  <!-- STAP 4 -->
+  <div class="page" data-step="4" hidden>
+   <h2>Jouw berekening</h2>
+   <p class="lede" id="result-month"></p>
+   <div id="results"></div>
+
+   <div class="info warning">
+    <strong>Let op:</strong>
+    dit is een indicatie, geen officiële beschikking.
+    Controleer de bedragen via
+    <a href="https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/themaoverstijgend/rekenhulpen/toeslagen/proefberekening_toeslagen"
+       target="_blank" rel="noopener">
+     de officiële proefberekening
+    </a>.
+   </div>
+  </div>
+ </div>
+
+ <div class="links">
+  Onafhankelijke rekenhulp · Dienst Toeslagen 2026 ·
+  <a href="https://www.belastingdienst.nl/wps/wcm/connect/nl/toeslagen/"
+     target="_blank" rel="noopener">
+   Officiële informatie
+  </a>
+ </div>
+</main>
+
+<div class="dock">
+ <button class="secondary" type="button" id="prev" hidden>
+  ← Vorige
+ </button>
+ <span class="count" id="dockstep">Stap 1 van 4</span>
+ <button class="primary" type="button" id="next">
+  Verder naar voorwaarden →
+ </button>
+</div>
+
+<script>
+(() => {
 'use strict';
-// Berekeningsbron: officiële brochures Dienst Toeslagen, januari 2026.
+
 const C = Object.freeze({
- zorg:{standard:2119,threshold:29736,lowPct:0.01912,partnerPct:0.04289,abovePct:0.1373,incomeMaxSingle:40857,incomeMaxPartner:51142,assetsSingle:146011,assetsPartner:184633},
- huur:{cap:932.93,youngCap:498.20,baseSingle:202.52,baseMulti:200.71,quality:498.20,cut2:713.02,cut3:764.14,incomeSingle:23425,incomeMulti:31500,phaseSingle:.27,phaseMulti:.22,assetsSingle:38479,assetsPartner:76958,youngChildExemption:6218},
- kind:{basic:2580,singleSupplement:3416,age12:724,age16:964,incomeSingle:29736,incomePartner:39141,phase:.076},
- opvang:{caps:{dag:11.23,bso:9.98,gast:8.49},maxHours:230}
+ zorg:{
+  standard:2119,threshold:29736,
+  lowPct:0.01912,partnerPct:0.04289,abovePct:0.1373,
+  incomeMaxSingle:40857,incomeMaxPartner:51142,
+  assetsSingle:146011,assetsPartner:184633
+ },
+ huur:{
+  cap:932.93,youngCap:498.20,
+  baseSingle:202.52,baseMulti:200.71,
+  quality:498.20,cut2:713.02,cut3:764.14,
+  incomeSingle:23425,incomeMulti:31500,
+  phaseSingle:.27,phaseMulti:.22,
+  assetsSingle:38479,assetsPartner:76958,
+  youngChildExemption:6218
+ },
+ kind:{
+  basic:2580,singleSupplement:3416,
+  age12:724,age16:964,
+  incomeSingle:29736,incomePartner:39141,
+  phase:.076
+ },
+ opvang:{
+  caps:{dag:11.23,bso:9.98,gast:8.49},
+  maxHours:230
+ }
 });
-// [upper bound of taxable annual income, first child percentage, later child percentage].
-// Source: Berekening kinderopvangtoeslag 2026, p. 3 (full statutory table).
+
 const opvangBands=[
-[24149,96,96],[25756,96,96],[27363,96,96],[28973,96,96],[30579,96,96],[32189,96,96],[33795,96,96],[35400,96,96],[37129,96,96],[38855,96,96],[40586,96,96],[42313,96,96],[44046,96,96],[45776,96,96],[47546,96,96],[49318,96,96],[51092,96,96],[52864,96,96],[54641,96,96],[56412,96,96],
-[58184,95.5,95.6],[59957,94.8,95.6],[61895,93.9,95.6],[65695,92.4,95.6],[69492,91.6,95.2],[73292,90.5,94.6],[77094,88.2,94.2],[80891,85.9,93.9],[84693,83.7,93.2],[88491,81.2,92.7],[92291,78.9,92.2],[96091,76.7,91.5],[99889,74.3,90.9],[103694,72.1,90.5],[107492,69.6,90.2],
-[111290,67.3,89.5],[115090,65.1,89.1],[118963,62.7,88.6],[122857,60.6,87.9],[126747,58.5,87.4],[130638,56.4,87],[134527,54.2,86.7],[138420,52.3,86],[142312,50.4,85.4],[146205,48.5,85],[150092,46.5,84.4],[153982,44.5,84],[157877,42.5,83.3],[161766,40.5,82.7],[165657,38.5,81.7],[169547,36.5,81.4],[173440,36.5,80.6],[177335,36.5,79.7],[181223,36.5,79.1],[185114,36.5,78.2],[189002,36.5,77.7],[192896,36.5,76.9],[196789,36.5,76.2],[200681,36.5,75.5],[204571,36.5,74.5],[208458,36.5,74],[212353,36.5,73.3],[216242,36.5,72.5],[220134,36.5,71.8],[224026,36.5,71.2],[227915,36.5,70.4],[231807,36.5,69.6],[235697,36.5,69.1],[99999999,36.5,68.2]
+[24149,96,96],[25756,96,96],[27363,96,96],
+[28973,96,96],[30579,96,96],[32189,96,96],
+[33795,96,96],[35400,96,96],[37129,96,96],
+[38855,96,96],[40586,96,96],[42313,96,96],
+[44046,96,96],[45776,96,96],[47546,96,96],
+[49318,96,96],[51092,96,96],[52864,96,96],
+[54641,96,96],[56412,96,96],
+[58184,95.5,95.6],[59957,94.8,95.6],
+[61895,93.9,95.6],[65695,92.4,95.6],
+[69492,91.6,95.2],[73292,90.5,94.6],
+[77094,88.2,94.2],[80891,85.9,93.9],
+[84693,83.7,93.2],[88491,81.2,92.7],
+[92291,78.9,92.2],[96091,76.7,91.5],
+[99889,74.3,90.9],[103694,72.1,90.5],
+[107492,69.6,90.2],[111290,67.3,89.5],
+[115090,65.1,89.1],[118963,62.7,88.6],
+[122857,60.6,87.9],[126747,58.5,87.4],
+[130638,56.4,87],[134527,54.2,86.7],
+[138420,52.3,86],[142312,50.4,85.4],
+[146205,48.5,85],[150092,46.5,84.4],
+[153982,44.5,84],[157877,42.5,83.3],
+[161766,40.5,82.7],[165657,38.5,81.7],
+[169547,36.5,81.4],[173440,36.5,80.6],
+[177335,36.5,79.7],[181223,36.5,79.1],
+[185114,36.5,78.2],[189002,36.5,77.7],
+[192896,36.5,76.9],[196789,36.5,76.2],
+[200681,36.5,75.5],[204571,36.5,74.5],
+[208458,36.5,74],[212353,36.5,73.3],
+[216242,36.5,72.5],[220134,36.5,71.8],
+[224026,36.5,71.2],[227915,36.5,70.4],
+[231807,36.5,69.6],[235697,36.5,69.1],
+[99999999,36.5,68.2]
 ];
+
 function geldgetal(value){
- const raw=String(value==null?'':value).trim().replace(/[\s€]/g,'');
+ const raw=String(value==null?'':value)
+  .trim().replace(/[\s€]/g,'');
+
  if(raw==='')return NaN;
+
  let v=raw;
- if(v.indexOf(',')!==-1&&v.indexOf('.')!==-1){
-   v=v.lastIndexOf(',')>v.lastIndexOf('.')?v.replace(/\./g,'').replace(',','.') : v.replace(/,/g,'');
- }else if(v.indexOf(',')!==-1){v=v.replace(',','.');}
- else if(/^-?\d{1,3}(?:\.\d{3})+$/.test(v)) {v=v.replace(/\./g,'');}
+
+ if(v.includes(',')&&v.includes('.')){
+  v=v.lastIndexOf(',')>v.lastIndexOf('.')
+   ?v.replace(/\./g,'').replace(',','.')
+   :v.replace(/,/g,'');
+ }else if(v.includes(',')){
+  v=v.replace(',','.');
+ }else if(/^-?\d{1,3}(?:\.\d{3})+$/.test(v)){
+  v=v.replace(/\./g,'');
+ }
+
  return Number(v);
 }
-const N=v=>{const t=geldgetal(v);return Number.isFinite(t)?t:0;};
+
+const N=v=>{
+ const t=geldgetal(v);
+ return Number.isFinite(t)?t:0;
+};
+
 const floor=v=>Math.max(0,Math.floor(v+1e-8));
-function bands(income){return opvangBands.find(r=>income<=r[0]) || opvangBands.at(-1);}
-function calcZorg({income=0,partner=false,partnerInsured=true}={}){
- const c=C.zorg; const maxIncome=partner?c.incomeMaxPartner:c.incomeMaxSingle;
- if(income>maxIncome)return {monthly:0,annual:0,reason:`Inkomen boven ${maxIncome.toLocaleString('nl-NL')} euro.`};
- const norm=c.threshold*(partner?c.partnerPct:c.lowPct)+Math.max(0,income-c.threshold)*c.abovePct;
- const gross=Math.max(0,c.standard*(partner?2:1)-norm);
- const annual=partner&&!partnerInsured?gross*.5:gross;
- return {monthly:floor(annual/12),annual,standard:c.standard*(partner?2:1),norm,percent:partner&&!partnerInsured?.5:1};
+
+function bands(income){
+ return opvangBands.find(r=>income<=r[0])||
+  opvangBands[opvangBands.length-1];
 }
-function calcHuur({income=0,rent=0,people=1,under21=false,youngException=false}={}){
- const c=C.huur; const multi=people>=2;
+
+function calcZorg({
+ income=0,partner=false,partnerInsured=true
+}={}){
+ const c=C.zorg;
+ const maxIncome=partner
+  ?c.incomeMaxPartner:c.incomeMaxSingle;
+
+ if(income>maxIncome){
+  return{
+   monthly:0,annual:0,
+   reason:`Inkomen boven ${maxIncome.toLocaleString('nl-NL')} euro.`
+  };
+ }
+
+ const norm=
+  c.threshold*(partner?c.partnerPct:c.lowPct)+
+  Math.max(0,income-c.threshold)*c.abovePct;
+
+ const gross=Math.max(
+  0,c.standard*(partner?2:1)-norm
+ );
+
+ const annual=partner&&!partnerInsured
+  ?gross*.5:gross;
+
+ return{
+  monthly:floor(annual/12),
+  annual,
+  standard:c.standard*(partner?2:1),
+  norm,
+  percent:partner&&!partnerInsured?.5:1
+ };
+}
+
+function calcHuur({
+ income=0,rent=0,people=1,
+ under21=false,youngException=false
+}={}){
+ const c=C.huur;
+ const multi=people>=2;
  const cap=under21&&!youngException?c.youngCap:c.cap;
  const actual=Math.min(Math.max(0,rent),cap);
  const base=multi?c.baseMulti:c.baseSingle;
- const a=Math.max(0,Math.min(actual,c.quality)-base);
- const b=!under21?Math.max(0,Math.min(actual,people>=3?c.cut3:c.cut2)-c.quality)*.65:0;
- const d=!under21?Math.max(0,actual-(people>=3?c.cut3:c.cut2))*.4:0;
- const incomeBase=multi?c.incomeMulti:c.incomeSingle;
- const correction=Math.max(0,income-incomeBase)*(multi?c.phaseMulti:c.phaseSingle)/12;
+
+ const a=Math.max(
+  0,Math.min(actual,c.quality)-base
+ );
+
+ const b=!under21
+  ?Math.max(
+   0,Math.min(actual,people>=3?c.cut3:c.cut2)-c.quality
+  )*.65
+  :0;
+
+ const d=!under21
+  ?Math.max(
+   0,actual-(people>=3?c.cut3:c.cut2)
+  )*.4
+  :0;
+
+ const incomeBase=multi
+  ?c.incomeMulti:c.incomeSingle;
+
+ const correction=
+  Math.max(0,income-incomeBase)*
+  (multi?c.phaseMulti:c.phaseSingle)/12;
+
  const raw=a+b+d-correction;
- return {monthly:floor(raw),raw:Math.max(0,raw),base,rentUsed:actual,a,b,c:d,correction,cap,incomeBase};
+
+ return{
+  monthly:floor(raw),
+  raw:Math.max(0,raw),
+  base,rentUsed:actual,
+  a,b,c:d,correction,cap,incomeBase
+ };
 }
-function calcKind({income=0,partner=false,ages=[]}={}){
+
+function calcKind({
+ income=0,partner=false,ages=[]
+}={}){
  const count=ages.length;
- if(count<1) return {monthly:0,annual:0};
+
+ if(count<1)return{monthly:0,annual:0};
+
  const c=C.kind;
- const base=c.basic*count+(partner?0:c.singleSupplement);
- const ageBonus=ages.reduce((sum,age)=>sum+(age>=16?c.age16:age>=12?c.age12:0),0);
- const phase=Math.max(0,income-(partner?c.incomePartner:c.incomeSingle))*c.phase;
- const annual=Math.max(0,base+ageBonus-phase);
- return {monthly:floor(annual/12),annual,base,ageBonus,phase};
+
+ const base=
+  c.basic*count+
+  (partner?0:c.singleSupplement);
+
+ const ageBonus=ages.reduce(
+  (sum,age)=>sum+(
+   age>=16?c.age16:age>=12?c.age12:0
+  ),0
+ );
+
+ const phase=Math.max(
+  0,income-(partner?c.incomePartner:c.incomeSingle)
+ )*c.phase;
+
+ const annual=Math.max(
+  0,base+ageBonus-phase
+ );
+
+ return{
+  monthly:floor(annual/12),
+  annual,base,ageBonus,phase
+ };
 }
-function calcOpvang({income=0,children=[]}={}){
+
+function calcOpvang({
+ income=0,children=[]
+}={}){
  const band=bands(income);
- const contracts=children.map((child,i)=>({index:i,child:String(child.child||i+1),hours:Math.max(0,N(child.hours)),price:Math.max(0,Math.min(N(child.rate),C.opvang.caps[child.type]||C.opvang.caps.dag)),type:child.type}));
+
+ const contracts=children.map((child,i)=>({
+  index:i,
+  child:String(child.child||i+1),
+  hours:Math.max(0,N(child.hours)),
+  price:Math.max(
+   0,Math.min(
+    N(child.rate),
+    C.opvang.caps[child.type]||C.opvang.caps.dag
+   )
+  ),
+  type:child.type
+ }));
+
  const groups=new Map();
+
  for(const contract of contracts){
-  const g=groups.get(contract.child)||{child:contract.child,hours:0,cost:0,contracts:0};
+  const g=groups.get(contract.child)||{
+   child:contract.child,
+   hours:0,cost:0,contracts:0
+  };
+
   g.hours+=contract.hours;
   g.cost+=contract.hours*contract.price;
   g.contracts++;
+
   groups.set(contract.child,g);
  }
- // With multiple contracts for one child, never pretend to know which hours should count
- // if the statutory maximum is exceeded. Such cases are shown as "controle nodig" in UI.
- const overHours=Array.from(groups.values()).filter(g=>g.hours>230&&g.contracts>1);
+
+ const overHours=Array.from(groups.values())
+  .filter(g=>g.hours>230&&g.contracts>1);
+
  const kids=Array.from(groups.values()).map(g=>{
-  const hours=Math.min(230,g.hours),cost=g.contracts===1?hours*contracts.find(x=>x.child===g.child).price:g.cost;
-  return {...g,hours,cost};
+  const hours=Math.min(230,g.hours);
+
+  const cost=g.contracts===1
+   ?hours*contracts.find(
+    x=>x.child===g.child
+   ).price
+   :g.cost;
+
+  return{...g,hours,cost};
  });
- const first=kids.slice().sort((a,b)=>b.hours-a.hours||b.cost-a.cost)[0];
- const calculated=kids.map(k=>({...k,percentage:k.child===first?.child?band[1]:band[2],allowance:k.cost*(k.child===first?.child?band[1]:band[2])/100}));
- return {monthly:floor(calculated.reduce((sum,k)=>sum+k.allowance,0)),raw:calculated.reduce((sum,k)=>sum+k.allowance,0),firstPercentage:band[1],otherPercentage:band[2],kids:calculated,overHours,monthlyCost:kids.reduce((a,k)=>a+k.cost,0),actualCost:children.reduce((a,k)=>a+Math.max(0,N(k.hours))*Math.max(0,N(k.rate)),0)};
+
+ const first=kids.slice().sort(
+  (a,b)=>b.hours-a.hours||b.cost-a.cost
+ )[0];
+
+ const calculated=kids.map(k=>({
+  ...k,
+  percentage:k.child===first?.child?band[1]:band[2],
+  allowance:k.cost*(
+   k.child===first?.child?band[1]:band[2]
+  )/100
+ }));
+
+ return{
+  monthly:floor(
+   calculated.reduce(
+    (sum,k)=>sum+k.allowance,0
+   )
+  ),
+  raw:calculated.reduce(
+   (sum,k)=>sum+k.allowance,0
+  ),
+  firstPercentage:band[1],
+  otherPercentage:band[2],
+  kids:calculated,
+  overHours,
+  monthlyCost:kids.reduce(
+   (a,k)=>a+k.cost,0
+  ),
+  actualCost:children.reduce(
+   (a,k)=>a+
+    Math.max(0,N(k.hours))*
+    Math.max(0,N(k.rate)),0
+  )
+ };
 }
 
-window.ToeslagenEngine2026=Object.freeze({C,opvangBands,calcZorg,calcHuur,calcKind,calcOpvang,bands,getal:geldgetal});
-})();</script>
-<script>
-(()=>{'use strict';
-const E=window.ToeslagenEngine2026;
-const labels=['Persoonlijke gegevens','Voorwaarden','Kosten en kinderen','Resultaten'];
-const B={zorg:'Zorgtoeslag',huur:'Huurtoeslag',opvang:'Kinderopvangtoeslag',kind:'Kindgebonden budget'};
-const Q={zorg:['insurance'],huur:['rental','independent','registered','owner'],opvang:['registeredCare','active','childLives','childCost'],kind:['under18','childBenefit']};
-const special=new Set(['independent','active','childLives','childBenefit']);
-const format=v=>new Intl.NumberFormat('nl-NL',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(Number(v)||0);
-const fmt2=v=>new Intl.NumberFormat('nl-NL',{style:'currency',currency:'EUR',minimumFractionDigits:2,maximumFractionDigits:2}).format(Number(v)||0);
-const sanitize=v=>String(v??'').replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]));
-const v=id=>document.getElementById(id)?.value??'';
-const r=name=>document.querySelector('input[name="'+name+'"]:checked')?.value||'';
-const n=id=>E.getal(v(id));
-const selected=()=>Array.from(document.querySelectorAll('input[name="benefit"]:checked')).map(x=>x.value);
-const fullPartner=()=>r('partner')==='yes'&&r('partnerFull')==='yes';
-let step=1, counters={room:0,child:0,care:0};
-function boxStyle(){document.getElementById('partnerbox').hidden=r('partner')!=='yes';document.getElementById('partnerAddressBox').hidden=r('partner')!=='yes';document.getElementById('turn18box').hidden=n('age')!==18;document.getElementById('youngbox').hidden=n('age')>=21;document.getElementById('minorIncomeBox').hidden=r('minorHasIncome')!=='yes';for(const x of document.querySelectorAll('[data-benefit]')){x.hidden=!selected().includes(x.dataset.benefit);}document.querySelector('[data-question="partnerInsured"]').hidden=r('partner')!=='yes';for(const row of document.querySelectorAll('[data-cost-benefit]')){row.hidden=!selected().includes(row.dataset.costBenefit)||(step>=3&&eligibility(row.dataset.costBenefit).status!=='yes');}}
-function euroInput(name,placeholder='0'){return `<input type="text" inputmode="decimal" data-prop="${name}" placeholder="${placeholder}">`;}
-function inp(name,type='number',max=''){return `<input type="${type}" inputmode="decimal" min="0" ${max?'max="'+max+'"':''} data-prop="${name}" placeholder="0">`;}
-function makeRow(type){counters[type]++;const id=counters[type];let h='';
-if(type==='child')h=`<div class="entry" data-row="child"><div class="entrytop">Kind ${id} <button class="remove" type="button" data-remove="1">Verwijderen</button></div><div class="fields"><label class="field">Leeftijd in gekozen maand ${inp('age','number','17')}</label><label class="field">Is het kind in de gekozen maand 0, 12 of 16 geworden?<select data-prop="birthday"><option value="">Kies antwoord</option><option value="no">Nee</option><option value="yes">Ja</option></select><small>Alleen relevant bij leeftijd 0, 12 of 16.</small></label></div></div>`;
-if(type==='care')h=`<div class="entry" data-row="care"><div class="entrytop">Opvangregel ${id} <button class="remove" type="button" data-remove="1">Verwijderen</button></div><div class="fields"><label class="field">Kindnummer (1, 2, …) ${inp('child','number','25')}</label><label class="field">Soort opvang <select data-prop="type"><option value="dag">Dagopvang</option><option value="bso">Buitenschoolse opvang</option><option value="gast">Gastouderopvang</option></select></label><label class="field">Opvanguren deze maand ${euroInput('hours','Bijv. 120')}</label><label class="field">Werkelijk uurtarief (€) ${euroInput('rate','Bijv. 10,50')}</label></div></div>`;
-if(type==='room')h=`<div class="entry" data-row="room"><div class="entrytop">Medebewoner ${id} <button class="remove" type="button" data-remove="1">Verwijderen</button></div><div class="fields"><label class="field">Leeftijd deze maand ${inp('age','number','120')}</label><label class="field">Leeftijd op 1 januari 2026 ${inp('ageJan1','number','120')}</label><label class="field">Toetsingsinkomen 2026 (€) ${euroInput('income')}</label><label class="field">Vermogen 1 januari (€) ${euroInput('wealth')}</label><label class="field">Relatie <select data-prop="relation"><option value="other">Andere medebewoner</option><option value="child">Thuiswonend kind</option></select></label><label class="field">Rechtmatig verblijf? <select data-prop="legal"><option value="">Kies</option><option value="yes">Ja</option><option value="no">Nee</option><option value="unsure">Weet ik niet</option></select></label><label class="field">Heel 2026 medebewoner? <select data-prop="wholeYear"><option value="yes">Ja</option><option value="no">Nee</option><option value="unsure">Weet ik niet</option></select></label></div></div>`;
-const div=document.createElement('div');div.innerHTML=h;document.getElementById(type+'Rows').appendChild(div.firstElementChild);return id;}
-function rows(type){return Array.from(document.querySelectorAll('[data-row="'+type+'"]')).map(node=>{let a={};for(let el of node.querySelectorAll('[data-prop]'))a[el.dataset.prop]=el.value;return a;});}
-function error(message){const root=document.querySelector('.page[data-step="'+step+'"]');root.querySelector('.error')?.remove();const div=document.createElement('div');div.className='error';div.setAttribute('role','alert');div.textContent=message;root.prepend(div);div.scrollIntoView({behavior:'smooth',block:'center'});return false;}
-function numericValid(id,minimum=0,max=1e8){const value=v(id).trim();return value!==''&&Number.isFinite(n(id))&&n(id)>=minimum&&n(id)<=max;}
-function validStart(){if(!selected().length)return error('Kies minimaal één toeslag.');if(!numericValid('age',0,120)||!Number.isInteger(n('age')))return error('Vul je leeftijd in.');if(n('age')===18&&!r('turn18'))return error('Geef aan of je deze maand 18 wordt.');for(const id of ['partner','resident','legal'])if(!r(id))return error('Beantwoord de vragen over toeslagpartner, woonplaats en verblijfsrecht.');if(!numericValid('income',-200000,1e7)||!numericValid('wealth',0,1e8))return error('Vul het jaarinkomen en je vermogen in, ook als het bedrag 0 is.');if(r('partner')==='yes'){if(!r('partnerLegal')||!r('partnerFull'))return error('Vul de gegevens van je toeslagpartner aan.');if(!numericValid('partnerAge',0,120)||!numericValid('partnerWealth',0,1e8))return error('Vul leeftijd en vermogen van de toeslagpartner in (0 mag).');}return true;}
-function validRules(){for(const b of selected()){for(const name of Q[b])if(!r(name))return error('Beantwoord alle zichtbare basisvragen. Kies Weet ik niet wanneer nodig.');if(b==='zorg'&&r('partner')==='yes'&&!r('partnerInsured'))return error('Beantwoord de vraag over de zorgverzekering van je toeslagpartner.');}return true;}
-function eligibility(b){let no=[],review=[];const age=n('age'),p=r('partner')==='yes',joint=n('income'),assets=n('wealth')+(fullPartner()?n('partnerWealth'):0),hasFull=fullPartner();
-if(r('resident')==='no'){if(b==='huur')no.push('De huurwoning moet in Nederland staan.');else review.push('Buitenlandse woon- en verzekeringssituatie.');}if(r('resident')==='unsure')review.push('Woonland is onzeker.');
-if(r('legal')==='no'){if(b==='kind')review.push('Bij kindgebonden budget kunnen uitzonderingen voor rechtmatig verblijvende kinderen gelden.');else no.push('Geen passend verblijfsrecht opgegeven.');}if(r('legal')==='unsure')review.push('Verblijfsrecht moet worden vastgesteld.');if(r('partner')==='unsure')review.push('Toeslagpartnerschap is onzeker.');
-if(p){if(r('partnerLegal')!=='yes')review.push('Verblijfsrecht van toeslagpartner vereist beoordeling.');if(r('partnerFull')!=='yes')review.push('Een wisseling van toeslagpartner binnen 2026 vraagt een maand-specifieke beoordeling.');}
-for(const id of Q[b]){const a=r(id);if(a==='unsure')review.push('Een hoofdvoorwaarde is onbekend.');else if(a==='no'){if(special.has(id))review.push('Een hoofdvoorwaarde ontbreekt, maar een wettelijke uitzondering kan gelden.');else no.push('Een hoofdvoorwaarde is niet vervuld.');}}
-if(b==='zorg'){if(age<18)no.push('Jonger dan 18 jaar.');if(age===18&&r('turn18')==='yes')no.push('Zorgtoeslag begint in beginsel de maand na de 18e verjaardag.');if(joint>(p?E.C.zorg.incomeMaxPartner:E.C.zorg.incomeMaxSingle))no.push('Jaarinkomen boven de zorgtoeslaggrens.');if(assets>(hasFull?E.C.zorg.assetsPartner:E.C.zorg.assetsSingle))no.push('Vermogen op 1 januari boven de grens.');}
-if(b==='huur'){if(age<18)review.push('Voor minderjarigen gelden bijzondere uitzonderingen.');if(age===18&&r('turn18')==='yes')review.push('De eerste dag van de maand is bepalend.');if(assets>(hasFull?E.C.huur.assetsPartner:E.C.huur.assetsSingle))no.push('Vermogen op 1 januari boven de huurtoeslaggrens.');}
-if(b==='kind'){if(assets>(hasFull?E.C.zorg.assetsPartner:E.C.zorg.assetsSingle))no.push('Vermogen op 1 januari boven de grens.');}
-return no.length?{status:'no',reason:no.join(' ')}:review.length?{status:'review',reason:review.join(' ')}:{status:'yes',reason:'De hoofdvoorwaarden lijken vervuld. Een bedrag kan worden berekend.'};}
-function showElig(){const el=document.getElementById('eligibility-summary');el.innerHTML=selected().map(b=>{const x=eligibility(b);return `<div class="eligibility-card"><div class="hd"><strong>${B[b]}</strong><span class="chip ${x.status}">${x.status==='yes'?'Voorlopig mogelijk':x.status==='no'?'Waarschijnlijk geen recht':'Controle nodig'}</span></div><p>${sanitize(x.reason)}</p></div>`;}).join('');for(const x of document.querySelectorAll('[data-cost-benefit]'))x.hidden=eligibility(x.dataset.costBenefit).status!=='yes';}
-function validDetails(){if(selected().includes('huur')&&eligibility('huur').status==='yes'){if(!numericValid('rent',1,25000))return error('Vul de kale huur per maand in.');if(v('minorHouse').trim()==='')document.getElementById('minorHouse').value='0';if(!numericValid('minorHouse',0,30)||!Number.isInteger(n('minorHouse')))return error('Vul het aantal minderjarige medebewoners in.');if(r('partner')==='yes'&&!r('partnerAtAddress'))return error('Vul in of je toeslagpartner op het huuradres woont.');if(n('age')<21&&(!r('age21AtAddress')||!r('youngException')))return error('Beantwoord de twee extra huurvragen voor jongeren.');if(!r('minorHasIncome'))return error('Beantwoord de vraag over inkomen van minderjarigen.');if(r('minorHasIncome')==='yes'&&!numericValid('minorExcess',0,10000000))return error('Vul het meetellend inkomen van de minderjarigen in.');for(const a of rows('room')){if(!Number.isInteger(Number(a.age))||Number(a.age)<18||Number(a.age)>120||!Number.isInteger(Number(a.ageJan1))||Number(a.ageJan1)<17||Number(a.ageJan1)>120||Number(a.ageJan1)>Number(a.age)||Number(a.age)-Number(a.ageJan1)>1||!Number.isFinite(E.getal(a.income))||!Number.isFinite(E.getal(a.wealth))||E.getal(a.wealth)<0||!a.legal)return error('Vul alle velden van de volwassen medebewoners correct in.');}}
-if(selected().includes('kind')&&eligibility('kind').status==='yes'){if(!rows('child').length)return error('Voeg minstens één kind toe.');for(const a of rows('child')){if(!/^\d+$/.test(a.age)||Number(a.age)>17)return error('Vul bij elk kind een leeftijd van 0 tot 17 in.');if([0,12,16].includes(Number(a.age))&&!['yes','no'].includes(a.birthday))return error('Vul voor kinderen van 0, 12 en 16 jaar in of de verjaardag in de gekozen maand valt.');}}
-if(selected().includes('opvang')&&eligibility('opvang').status==='yes'){if(!rows('care').length)return error('Voeg minstens één opvangregel toe.');for(const a of rows('care'))if(!/^\d+$/.test(a.child)||Number(a.child)<1||Number(a.child)>25||!Number.isFinite(E.getal(a.hours))||E.getal(a.hours)<=0||E.getal(a.hours)>1000||!Number.isFinite(E.getal(a.rate))||E.getal(a.rate)<=0||E.getal(a.rate)>1000)return error('Vul voor elke opvangregel kindnummer, uren en uurtarief correct in.');}
-return true;}
-function compute(b){const eligible=eligibility(b);if(eligible.status==='no')return {status:'no',amount:0,description:eligible.reason};if(eligible.status==='review')return {status:'review',description:eligible.reason};
-const income=n('income'),p=r('partner')==='yes';
-if(b==='zorg'){let z=E.calcZorg({income,partner:p,partnerInsured:!p||(n('partnerAge')>=18&&r('partnerInsured')==='yes')});return {status:'ok',amount:z.monthly,description:`Standaardpremie ${fmt2(z.standard)} en normpremie ${fmt2(z.norm)} per jaar; resultaat naar beneden afgerond op hele euro's per maand.`};}
-if(b==='kind'){const ages=rows('child').map(x=>Number(x.age)-((x.birthday==='yes'&&[0,12,16].includes(Number(x.age)))?1:0)).filter(x=>x>=0);const z=E.calcKind({income,partner:p,ages});return {status:'ok',amount:z.monthly,description:`Basisbedrag ${fmt2(z.base)} + leeftijdstoeslagen ${fmt2(z.ageBonus)} − inkomensafbouw ${fmt2(z.phase)} per jaar.`};}
-if(b==='opvang'){const a=rows('care');const z=E.calcOpvang({income,children:a});if(z.overHours.length)return {status:'review',description:'Meer dan 230 uur per kind over meerdere contracten. Verdeling moet apart worden nagekeken.'};const msg=a.some(q=>E.getal(q.hours)>230)?' Maximaal 230 uur per kind per maand wordt vergoed.':'';return {status:'ok',amount:z.monthly,description:`Subsidiabele kosten ${fmt2(z.monthlyCost)} per maand. Eerste kind ${z.firstPercentage}%; volgende ${z.otherPercentage}%. Eigen bijdrage op basis van werkelijke kosten: ongeveer ${fmt2(z.actualCost-z.raw)}.${msg}`};}
-if(b==='huur'){const people=rows('room'),partnerIn=p?r('partnerAtAddress'):null;if(p&&partnerIn!=='yes')return {status:'review',description:'Toeslagpartner woont niet zeker op het huuradres. Daarvoor gelden afzonderlijke regels.'};if(people.some(x=>x.legal!=='yes'||x.wholeYear!=='yes'))return {status:'review',description:'Verblijfsstatus of een deeljaar-medebewoner vereist een aparte beoordeling van de inkomens- en vermogensperiode.'};if(people.some(x=>x.wholeYear==='yes'&&Number(x.ageJan1)>=18&&E.getal(x.wealth)>E.C.huur.assetsSingle))return {status:'no',amount:0,description:'Een medebewoner heeft te veel vermogen.'};if(people.some(x=>Number(x.ageJan1)<18))return {status:'review',description:'Minderjarige op 1 januari als meerderjarige medebewoner: bijzondere vermogenstoerekening nodig.'};const older=n('age')>=21||(p&&n('partnerAge')>=21)||people.some(x=>Number(x.age)>=21);const young=n('age')<21&&!older;let capException=r('youngException');if(n('age')<21&&(r('age21AtAddress')==='unsure'||capException==='unsure'))return {status:'review',description:'Leeftijds- of uitzonderingsregels voor huurgrens jonger dan 21 jaar vereisen controle.'};if(n('age')<21&&r('age21AtAddress')==='yes'&&!older)return {status:'review',description:'Er is volgens je antwoord een bewoner van 21+; diens gegevens ontbreken.'};if(young&&capException==='yes')return {status:'review',description:'Bij een uitzondering op de jongerenhuurgrens is een aparte beoordeling van de subsidiabele huurdelen nodig.'};const peopleCount=1+(p?1:0)+n('minorHouse')+people.length;const otherIncome=people.reduce((t,x)=>t+(x.relation==='child'&&Number(x.ageJan1)<23?Math.max(0,E.getal(x.income)-E.C.huur.youngChildExemption):E.getal(x.income)),0);const incomeAll=income+otherIncome+(r('minorHasIncome')==='yes'?n('minorExcess'):0);const z=E.calcHuur({income:Math.max(0,incomeAll),rent:n('rent'),people:peopleCount,under21:young,youngException:false});let warning=people.some(x=>x.wholeYear==='no')?' De inkomensperiode van een tijdelijk medebewoner kan een afwijkende uitkomst geven.':'';return {status:'ok',amount:z.monthly,description:`Rekenhuur ${fmt2(z.rentUsed)}. Huurdeel ${fmt2(z.a+z.b+z.c)} − inkomenscorrectie ${fmt2(z.correction)}. Huishouden: ${peopleCount} personen.${warning}`};}
-}
-function results(){const month=document.querySelector('#month option:checked').textContent;document.getElementById('result-month').textContent='Indicatieve maandbedragen voor '+month+'. Dit is geen definitieve jaarbeschikking.';let sum=0,uncertain=false;const cards=selected().map(b=>{const z=compute(b);if(z.status==='ok')sum+=z.amount;else if(z.status==='review')uncertain=true;const text=z.status==='ok'?(z.amount?'Berekend':'€ 0 volgens berekening'):z.status==='no'?'Geen recht volgens basischeck':'Controle nodig';return `<div class="resultcard"><div class="hd"><strong>${B[b]}</strong><span class="chip ${z.status==='ok'?'yes':z.status}">${text}</span></div><strong class="amount">${z.status==='ok'?format(z.amount)+' / maand':z.status==='no'?'€ 0':'—'}</strong><p class="details">${sanitize(z.description)}</p></div>`;}).join('');document.getElementById('results').innerHTML=`<div class="result-total"><div>${uncertain?'Som van alleen de berekenbare toeslagen':'Geschat totaal per maand'}</div><div class="big">${format(sum)}</div><small>${uncertain?'Niet alle toeslagen zijn meegenomen; extra beoordeling is nodig.':'Bij dezelfde situatie gedurende 12 maanden: indicatief '+format(sum*12)+' per jaar.'}</small></div>`+cards;}
-function showStep(next){step=next;for(const pane of document.querySelectorAll('.page'))pane.hidden=Number(pane.dataset.step)!==step;document.querySelectorAll('.progress span').forEach((el,i)=>el.classList.toggle('on',i<step));document.getElementById('steptext').textContent=`Stap ${step} van 4 · ${labels[step-1]}`;document.getElementById('dockstep').textContent=`Stap ${step} van 4`;document.getElementById('prev').hidden=step===1;document.getElementById('next').textContent=step===1?'Verder naar voorwaarden →':step===2?'Controleer mijn recht →':step===3?'Bereken mijn toeslagen →':'Opnieuw beginnen';document.querySelector('.wizard').scrollIntoView({behavior:'instant',block:'start'});}
-function next(){if(step===1){if(!validStart())return;showStep(2);}else if(step===2){if(!validRules())return;showElig();showStep(3);}else if(step===3){if(!validDetails())return;results();showStep(4);}else{document.querySelectorAll('input[type="radio"]').forEach(x=>x.checked=false);document.querySelectorAll('input[type="text"],input[type="number"]').forEach(x=>x.value='');document.querySelectorAll('input[name="benefit"]').forEach(x=>x.checked=true);document.getElementById('roomRows').innerHTML='';document.getElementById('childRows').innerHTML='';document.getElementById('careRows').innerHTML='';makeRow('child');makeRow('care');document.getElementById('minorHouse').value=0;document.getElementById('month').value=10;boxStyle();showStep(1);}}
-document.getElementById('next').addEventListener('click',next);document.getElementById('prev').addEventListener('click',()=>showStep(Math.max(1,step-1)));
-document.addEventListener('click',e=>{if(e.target.closest('[data-add]')){const t=e.target.closest('[data-add]').dataset.add;makeRow(t);}if(e.target.closest('[data-remove]')){const row=e.target.closest('[data-row]');if(row)row.remove();}});
-document.addEventListener('change',boxStyle);document.getElementById('age').addEventListener('input',boxStyle);
-makeRow('child');makeRow('care');document.getElementById('minorHouse').value='0';boxStyle();showStep(1);
+window.ToeslagenEngine2026=Object.freeze({
+ C,opvangBands,calcZorg,calcHuur,
+ calcKind,calcOpvang,bands,getal:geldgetal
+});
+
 })();
-</script></body></html>
+</script>
+
+<script>
+(()=>{
+'use strict';
+
+const E=window.ToeslagenEngine2026;
+
+const labels=[
+ 'Persoonlijke gegevens',
+ 'Voorwaarden',
+ 'Kosten en kinderen',
+ 'Resultaten'
+];
+
+const B={
+ zorg:'Zorgtoeslag',
+ huur:'Huurtoeslag',
+ opvang:'Kinderopvangtoeslag',
+ kind:'Kindgebonden budget'
+};
+
+const Q={
+ zorg:['insurance'],
+ huur:['rental','independent','registered','owner'],
+ opvang:['registeredCare','active','childLives','childCost'],
+ kind:['under18','childBenefit']
+};
+
+const special=new Set([
+ 'independent','active','childLives','childBenefit'
+]);
+
+const format=v=>new Intl.NumberFormat('nl-NL',{
+ style:'currency',currency:'EUR',
+ maximumFractionDigits:0
+}).format(Number(v)||0);
+
+const fmt2=v=>new Intl.NumberFormat('nl-NL',{
+ style:'currency',currency:'EUR',
+ minimumFractionDigits:2,
+ maximumFractionDigits:2
+}).format(Number(v)||0);
+
+const sanitize=v=>String(v??'')
+ .replace(/[&<>"']/g,x=>({
+  '&':'&amp;',
+  '<':'&lt;',
+  '>':'&gt;',
+  '"':'&quot;',
+  "'":'&#39;'
+ }[x]));
+
+const v=id=>document.getElementById(id)?.value??'';
+
+const r=name=>
+ document.querySelector(
+  'input[name="'+name+'"]:checked'
+ )?.value||'';
+
+const n=id=>E.getal(v(id));
+
+const selected=()=>Array.from(
+ document.querySelectorAll('input[name="benefit"]:checked')
+).map(x=>x.value);
+
+const fullPartner=()=>
+ r('partner')==='yes'&&r('partnerFull')==='yes';
+
+let step=1;
+let counters={room:0,child:0,care:0};
+
+/* TOON ALLEEN RELEVANTE VELDEN */
+
+function needsAge(){
+ return selected().some(
+  b=>b==='zorg'||b==='huur'
+ );
+}
+
+function needsWealth(){
+ return selected().some(
+  b=>b==='zorg'||b==='huur'||b==='kind'
+ );
+}
+
+function hasBenefit(b){
+ return selected().includes(b);
+}
+
+function boxStyle(){
+ const chosen=selected();
+ const ageNeeded=needsAge();
+ const wealthNeeded=needsWealth();
+ const partner=r('partner')==='yes';
+
+ document.getElementById('ageField').hidden=
+  !ageNeeded;
+
+ document.getElementById('wealthField').hidden=
+  !wealthNeeded;
+
+ document.getElementById('partnerbox').hidden=
+  !partner;
+
+ document.getElementById('partnerAgeField').hidden=
+  !ageNeeded;
+
+ document.getElementById('partnerWealthField').hidden=
+  !wealthNeeded;
+
+ document.getElementById('turn18box').hidden=
+  !ageNeeded||
+  v('age').trim()===''||
+  n('age')!==18;
+
+ document.getElementById('partnerAddressBox').hidden=
+  !partner||!hasBenefit('huur');
+
+ document.getElementById('youngbox').hidden=
+  !hasBenefit('huur')||
+  v('age').trim()===''||
+  n('age')>=21;
+
+ document.getElementById('minorIncomeBox').hidden=
+  r('minorHasIncome')!=='yes';
+
+ const partnerInsurance=
+  document.querySelector(
+   '[data-question="partnerInsured"]'
+  );
+
+ partnerInsurance.hidden=
+  !partner||!hasBenefit('zorg');
+
+ for(const section of document.querySelectorAll(
+  '[data-benefit]'
+ )){
+  section.hidden=
+   !chosen.includes(section.dataset.benefit);
+ }
+
+ for(const section of document.querySelectorAll(
+  '[data-cost-benefit]'
+ )){
+  const benefit=section.dataset.costBenefit;
+  const chosenBenefit=chosen.includes(benefit);
+
+  section.hidden=
+   !chosenBenefit||
+   (step>=3&&eligibility(benefit).status!=='yes');
+ }
+}
+
+/* RIJEN TOEVOEGEN */
+
+function euroInput(name,placeholder='0'){
+ return `<input type="text" inputmode="decimal"
+ data-prop="${name}" placeholder="${placeholder}">`;
+}
+
+function inp(name,type='number',max=''){
+ return `<input type="${type}" inputmode="numeric"
+ min="0" ${max?'max="'+max+'"':''}
+ data-prop="${name}" placeholder="0">`;
+}
+
+function updateChildBirthday(row){
+ if(!row)return;
+
+ const ageInput=row.querySelector(
+  '[data-prop="age"]'
+ );
+
+ const birthdayField=row.querySelector(
+  '[data-birthday-field]'
+ );
+
+ if(!ageInput||!birthdayField)return;
+
+ const raw=ageInput.value.trim();
+ const age=Number(raw);
+
+ const relevant=
+  raw!==''&&
+  Number.isInteger(age)&&
+  [0,12,16].includes(age);
+
+ birthdayField.hidden=!relevant;
+
+ const question=birthdayField.querySelector(
+  '[data-birthday-label]'
+ );
+
+ const select=birthdayField.querySelector(
+  '[data-prop="birthday"]'
+ );
+
+ if(!relevant){
+  select.value='';
+  return;
+ }
+
+ if(age===0){
+  question.textContent=
+   'Is je kind in deze maand geboren?';
+ }else{
+  question.textContent=
+   `Is je kind in deze maand ${age} jaar geworden?`;
+ }
+}
+
+function makeRow(type){
+ counters[type]++;
+ const id=counters[type];
+
+ let h='';
+
+ if(type==='child'){
+  h=`
+  <div class="entry" data-row="child">
+   <div class="entrytop">
+    Kind ${id}
+    <button class="remove" type="button"
+     data-remove="1">Verwijderen</button>
+   </div>
+
+   <div class="fields">
+    <label class="field">
+     Leeftijd van het kind in de gekozen maand
+     ${inp('age','number','17')}
+    </label>
+
+    <label class="field" data-birthday-field hidden>
+     <span data-birthday-label></span>
+     <select data-prop="birthday">
+      <option value="">Kies antwoord</option>
+      <option value="no">Nee</option>
+      <option value="yes">Ja</option>
+     </select>
+     <small>
+      Deze vraag verschijnt alleen wanneer
+      het kind 0, 12 of 16 jaar is.
+      De geboortemaand kan invloed hebben
+      op het recht en de leeftijdstoeslag.
+     </small>
+    </label>
+   </div>
+  </div>`;
+ }
+
+ if(type==='care'){
+  h=`
+  <div class="entry" data-row="care">
+   <div class="entrytop">
+    Opvangregel ${id}
+    <button class="remove" type="button"
+     data-remove="1">Verwijderen</button>
+   </div>
+
+   <div class="fields">
+    <label class="field">
+     Kindnummer (1, 2, …)
+     ${inp('child','number','25')}
+    </label>
+
+    <label class="field">
+     Soort opvang
+     <select data-prop="type">
+      <option value="dag">Dagopvang</option>
+      <option value="bso">Buitenschoolse opvang</option>
+      <option value="gast">Gastouderopvang</option>
+     </select>
+    </label>
+
+    <label class="field">
+     Opvanguren deze maand
+     ${euroInput('hours','Bijv. 120')}
+    </label>
+
+    <label class="field">
+     Werkelijk uurtarief (€)
+     ${euroInput('rate','Bijv. 10,50')}
+    </label>
+   </div>
+  </div>`;
+ }
+
+ if(type==='room'){
+  h=`
+  <div class="entry" data-row="room">
+   <div class="entrytop">
+    Medebewoner ${id}
+    <button class="remove" type="button"
+     data-remove="1">Verwijderen</button>
+   </div>
+
+   <div class="fields">
+    <label class="field">
+     Leeftijd deze maand
+     ${inp('age','number','120')}
+    </label>
+
+    <label class="field">
+     Leeftijd op 1 januari 2026
+     ${inp('ageJan1','number','120')}
+    </label>
+
+    <label class="field">
+     Toetsingsinkomen 2026 (€)
+     ${euroInput('income')}
+    </label>
+
+    <label class="field">
+     Vermogen 1 januari (€)
+     ${euroInput('wealth')}
+    </label>
+
+    <label class="field">
+     Relatie
+     <select data-prop="relation">
+      <option value="other">
+       Andere medebewoner
+      </option>
+      <option value="child">
+       Thuiswonend kind
+      </option>
+     </select>
+    </label>
+
+    <label class="field">
+     Rechtmatig verblijf?
+     <select data-prop="legal">
+      <option value="">Kies</option>
+      <option value="yes">Ja</option>
+      <option value="no">Nee</option>
+      <option value="unsure">Weet ik niet</option>
+     </select>
+    </label>
+
+    <label class="field">
+     Heel 2026 medebewoner?
+     <select data-prop="wholeYear">
+      <option value="yes">Ja</option>
+      <option value="no">Nee</option>
+      <option value="unsure">Weet ik niet</option>
+     </select>
+    </label>
+   </div>
+  </div>`;
+ }
+
+ const div=document.createElement('div');
+ div.innerHTML=h;
+
+ const row=div.firstElementChild;
+
+ document.getElementById(
+  type+'Rows'
+ ).appendChild(row);
+
+ if(type==='child'){
+  updateChildBirthday(row);
+ }
+
+ return id;
+}
+
+function rows(type){
+ return Array.from(
+  document.querySelectorAll(
+   '[data-row="'+type+'"]'
+  )
+ ).map(node=>{
+  const a={};
+
+  for(const el of node.querySelectorAll('[data-prop]')){
+   a[el.dataset.prop]=el.value;
+  }
+
+  return a;
+ });
+}
+
+/* VALIDATIE */
+
+function error(message){
+ const root=document.querySelector(
+  '.page[data-step="'+step+'"]'
+ );
+
+ root.querySelector('.error')?.remove();
+
+ const div=document.createElement('div');
+ div.className='error';
+ div.setAttribute('role','alert');
+ div.textContent=message;
+
+ root.prepend(div);
+
+ div.scrollIntoView({
+  behavior:'smooth',
+  block:'center'
+ });
+
+ return false;
+}
+
+function numericValid(id,minimum=0,max=1e8){
+ const raw=v(id).trim();
+
+ if(raw==='')return false;
+
+ const value=E.getal(raw);
+
+ return Number.isFinite(value)&&
+  value>=minimum&&value<=max;
+}
+
+function validStart(){
+ if(!selected().length){
+  return error(
+   'Kies minimaal één toeslag om te berekenen.'
+  );
+ }
+
+ if(needsAge()){
+  if(
+   !numericValid('age',0,120)||
+   !Number.isInteger(n('age'))
+  ){
+   return error('Vul je leeftijd in.');
+  }
+
+  if(n('age')===18&&!r('turn18')){
+   return error(
+    'Geef aan of je deze maand 18 wordt.'
+   );
+  }
+ }
+
+ for(const id of ['partner','resident','legal']){
+  if(!r(id)){
+   return error(
+    'Beantwoord de algemene basisvragen.'
+   );
+  }
+ }
+
+ if(!numericValid('income',-200000,1e7)){
+  return error(
+   'Vul je toetsingsinkomen over heel 2026 in.'
+  );
+ }
+
+ if(
+  needsWealth()&&
+  !numericValid('wealth',0,1e8)
+ ){
+  return error(
+   'Vul je vermogen op 1 januari 2026 in.'
+  );
+ }
+
+ if(r('partner')==='yes'){
+  if(!r('partnerLegal')||!r('partnerFull')){
+   return error(
+    'Beantwoord de vragen over je toeslagpartner.'
+   );
+  }
+
+  if(
+   needsAge()&&
+   (
+    !numericValid('partnerAge',0,120)||
+    !Number.isInteger(n('partnerAge'))
+   )
+  ){
+   return error(
+    'Vul de leeftijd van je toeslagpartner in.'
+   );
+  }
+
+  if(
+   needsWealth()&&
+   !numericValid('partnerWealth',0,1e8)
+  ){
+   return error(
+    'Vul het vermogen van je toeslagpartner in.'
+   );
+  }
+ }
+
+ return true;
+}
+
+function validRules(){
+ for(const b of selected()){
+  for(const name of Q[b]){
+   if(!r(name)){
+    return error(
+     'Beantwoord alle vragen van de gekozen toeslag.'
+    );
+   }
+  }
+
+  if(
+   b==='zorg'&&
+   r('partner')==='yes'&&
+   !r('partnerInsured')
+  ){
+   return error(
+    'Beantwoord de vraag over de zorgverzekering van je toeslagpartner.'
+   );
+  }
+ }
+
+ return true;
+}
+
+/* RECHT-CHECK */
+
+function eligibility(b){
+ let no=[],review=[];
+
+ const age=n('age');
+ const p=r('partner')==='yes';
+ const joint=n('income');
+ const hasFull=fullPartner();
+
+ const assets=
+  n('wealth')+
+  (hasFull?n('partnerWealth'):0);
+
+ if(r('resident')==='no'){
+  if(b==='huur'){
+   no.push('De huurwoning moet in Nederland staan.');
+  }else{
+   review.push(
+    'Buitenlandse woon- en verzekeringssituatie.'
+   );
+  }
+ }
+
+ if(r('resident')==='unsure'){
+  review.push('Woonland is onzeker.');
+ }
+
+ if(r('legal')==='no'){
+  if(b==='kind'){
+   review.push(
+    'Bij kindgebonden budget kunnen uitzonderingen voor rechtmatig verblijvende kinderen gelden.'
+   );
+  }else{
+   no.push(
+    'Geen passend verblijfsrecht opgegeven.'
+   );
+  }
+ }
+
+ if(r('legal')==='unsure'){
+  review.push(
+   'Verblijfsrecht moet worden vastgesteld.'
+  );
+ }
+
+ if(r('partner')==='unsure'){
+  review.push(
+   'Toeslagpartnerschap is onzeker.'
+  );
+ }
+
+ if(p){
+  if(r('partnerLegal')!=='yes'){
+   review.push(
+    'Verblijfsrecht van toeslagpartner vereist beoordeling.'
+   );
+  }
+
+  if(r('partnerFull')!=='yes'){
+   review.push(
+    'Een wisseling van toeslagpartner binnen 2026 vraagt een maand-specifieke beoordeling.'
+   );
+  }
+ }
+
+ for(const id of Q[b]){
+  const a=r(id);
+
+  if(a==='unsure'){
+   review.push(
+    'Een hoofdvoorwaarde is onbekend.'
+   );
+  }else if(a==='no'){
+   if(special.has(id)){
+    review.push(
+     'Een hoofdvoorwaarde ontbreekt, maar een wettelijke uitzondering kan gelden.'
+    );
+   }else{
+    no.push(
+     'Een hoofdvoorwaarde is niet vervuld.'
+    );
+   }
+  }
+ }
+
+ if(b==='zorg'){
+  if(age<18){
+   no.push('Jonger dan 18 jaar.');
+  }
+
+  if(age===18&&r('turn18')==='yes'){
+   no.push(
+    'Zorgtoeslag begint in beginsel de maand na de 18e verjaardag.'
+   );
+  }
+
+  if(
+   joint>(
+    p?E.C.zorg.incomeMaxPartner:
+      E.C.zorg.incomeMaxSingle
+   )
+  ){
+   no.push(
+    'Jaarinkomen boven de zorgtoeslaggrens.'
+   );
+  }
+
+  if(
+   assets>(
+    hasFull?E.C.zorg.assetsPartner:
+     E.C.zorg.assetsSingle
+   )
+  ){
+   no.push(
+    'Vermogen op 1 januari boven de grens.'
+   );
+  }
+ }
+
+ if(b==='huur'){
+  if(age<18){
+   review.push(
+    'Voor minderjarigen gelden bijzondere uitzonderingen.'
+   );
+  }
+
+  if(age===18&&r('turn18')==='yes'){
+   review.push(
+    'De eerste dag van de maand is bepalend.'
+   );
+  }
+
+  if(
+   assets>(
+    hasFull?E.C.huur.assetsPartner:
+     E.C.huur.assetsSingle
+   )
+  ){
+   no.push(
+    'Vermogen op 1 januari boven de huurtoeslaggrens.'
+   );
+  }
+ }
+
+ if(b==='kind'){
+  if(
+   assets>(
+    hasFull?E.C.zorg.assetsPartner:
+     E.C.zorg.assetsSingle
+   )
+  ){
+   no.push(
+    'Vermogen op 1 januari boven de grens.'
+   );
+  }
+ }
+
+ if(no.length){
+  return{
+   status:'no',
+   reason:no.join(' ')
+  };
+ }
+
+ if(review.length){
+  return{
+   status:'review',
+   reason:review.join(' ')
+  };
+ }
+
+ return{
+  status:'yes',
+  reason:'De hoofdvoorwaarden lijken vervuld. Een bedrag kan worden berekend.'
+ };
+}
+
+/* STAP 3: ALLEEN GEKOZEN TOESLAGEN */
+
+function showElig(){
+ const el=document.getElementById(
+  'eligibility-summary'
+ );
+
+ el.innerHTML=selected().map(b=>{
+  const x=eligibility(b);
+
+  return `
+   <div class="eligibility-card">
+    <div class="hd">
+     <strong>${B[b]}</strong>
+     <span class="chip ${x.status}">
+      ${
+       x.status==='yes'
+        ?'Voorlopig mogelijk':
+       x.status==='no'
+        ?'Waarschijnlijk geen recht':
+         'Controle nodig'
+      }
+     </span>
+    </div>
+    <p>${sanitize(x.reason)}</p>
+   </div>`;
+ }).join('');
+
+ for(const section of document.querySelectorAll(
+  '[data-cost-benefit]'
+ )){
+  const benefit=section.dataset.costBenefit;
+
+  section.hidden=
+   !selected().includes(benefit)||
+   eligibility(benefit).status!=='yes';
+ }
+}
+
+function validDetails(){
+ if(
+  hasBenefit('huur')&&
+  eligibility('huur').status==='yes'
+ ){
+  if(!numericValid('rent',1,25000)){
+   return error(
+    'Vul de kale huur per maand in.'
+   );
+  }
+
+  if(v('minorHouse').trim()===''){
+   document.getElementById(
+    'minorHouse'
+   ).value='0';
+  }
+
+  if(
+   !numericValid('minorHouse',0,30)||
+   !Number.isInteger(n('minorHouse'))
+  ){
+   return error(
+    'Vul het aantal minderjarige medebewoners in.'
+   );
+  }
+
+  if(
+   r('partner')==='yes'&&
+   !r('partnerAtAddress')
+  ){
+   return error(
+    'Vul in of je toeslagpartner op het huuradres woont.'
+   );
+  }
+
+  if(
+   n('age')<21&&
+   (
+    !r('age21AtAddress')||
+    !r('youngException')
+   )
+  ){
+   return error(
+    'Beantwoord de twee extra huurvragen voor jongeren.'
+   );
+  }
+
+  if(!r('minorHasIncome')){
+   return error(
+    'Beantwoord de vraag over inkomen van minderjarigen.'
+   );
+  }
+
+  if(
+   r('minorHasIncome')==='yes'&&
+   !numericValid('minorExcess',0,10000000)
+  ){
+   return error(
+    'Vul het meetellend inkomen van de minderjarigen in.'
+   );
+  }
+
+  for(const a of rows('room')){
+   if(
+    !Number.isInteger(Number(a.age))||
+    Number(a.age)<18||
+    Number(a.age)>120||
+    !Number.isInteger(Number(a.ageJan1))||
+    Number(a.ageJan1)<17||
+    Number(a.ageJan1)>120||
+    Number(a.ageJan1)>Number(a.age)||
+    Number(a.age)-Number(a.ageJan1)>1||
+    !Number.isFinite(E.getal(a.income))||
+    !Number.isFinite(E.getal(a.wealth))||
+    E.getal(a.wealth)<0||
+    !a.legal
+   ){
+    return error(
+     'Vul alle velden van de volwassen medebewoners correct in.'
+    );
+   }
+  }
+ }
+
+ if(
+  hasBenefit('kind')&&
+  eligibility('kind').status==='yes'
+ ){
+  if(!rows('child').length){
+   return error(
+    'Voeg minstens één kind toe.'
+   );
+  }
+
+  for(const a of rows('child')){
+   const age=Number(a.age);
+
+   if(
+    !/^\d+$/.test(a.age)||
+    age>17
+   ){
+    return error(
+     'Vul bij elk kind een leeftijd van 0 tot 17 jaar in.'
+    );
+   }
+
+   if(
+    [0,12,16].includes(age)&&
+    !['yes','no'].includes(a.birthday)
+   ){
+    return error(
+     'Geef aan of het kind in deze maand is geboren of 12 of 16 jaar is geworden.'
+    );
+   }
+  }
+ }
+
+ if(
+  hasBenefit('opvang')&&
+  eligibility('opvang').status==='yes'
+ ){
+  if(!rows('care').length){
+   return error(
+    'Voeg minstens één opvangregel toe.'
+   );
+  }
+
+  for(const a of rows('care')){
+   if(
+    !/^\d+$/.test(a.child)||
+    Number(a.child)<1||
+    Number(a.child)>25||
+    !Number.isFinite(E.getal(a.hours))||
+    E.getal(a.hours)<=0||
+    E.getal(a.hours)>1000||
+    !Number.isFinite(E.getal(a.rate))||
+    E.getal(a.rate)<=0||
+    E.getal(a.rate)>1000
+   ){
+    return error(
+     'Vul voor elke opvangregel kindnummer, uren en uurtarief correct in.'
+    );
+   }
+  }
+ }
+
+ return true;
+}
+
+/* BEREKENING */
+
+function compute(b){
+ const eligible=eligibility(b);
+
+ if(eligible.status==='no'){
+  return{
+   status:'no',
+   amount:0,
+   description:eligible.reason
+  };
+ }
+
+ if(eligible.status==='review'){
+  return{
+   status:'review',
+   description:eligible.reason
+  };
+ }
+
+ const income=n('income');
+ const p=r('partner')==='yes';
+
+ if(b==='zorg'){
+  const z=E.calcZorg({
+   income,
+   partner:p,
+   partnerInsured:
+    !p||
+    (
+     n('partnerAge')>=18&&
+     r('partnerInsured')==='yes'
+    )
+  });
+
+  return{
+   status:'ok',
+   amount:z.monthly,
+   description:
+    `Standaardpremie ${fmt2(z.standard)} en `+
+    `normpremie ${fmt2(z.norm)} per jaar; `+
+    `resultaat naar beneden afgerond op hele euro's per maand.`
+  };
+ }
+
+ if(b==='kind'){
+  const ages=rows('child').map(x=>{
+   const age=Number(x.age);
+
+   if(
+    x.birthday==='yes'&&
+    [0,12,16].includes(age)
+   ){
+    return age-1;
+   }
+
+   return age;
+  }).filter(x=>x>=0);
+
+  const z=E.calcKind({
+   income,partner:p,ages
+  });
+
+  return{
+   status:'ok',
+   amount:z.monthly,
+   description:
+    `Basisbedrag ${fmt2(z.base)} + `+
+    `leeftijdstoeslagen ${fmt2(z.ageBonus)} − `+
+    `inkomensafbouw ${fmt2(z.phase)} per jaar.`
+  };
+ }
+
+ if(b==='opvang'){
+  const a=rows('care');
+
+  const z=E.calcOpvang({
+   income,children:a
+  });
+
+  if(z.overHours.length){
+   return{
+    status:'review',
+    description:
+     'Meer dan 230 uur per kind over meerdere contracten. '+
+     'Verdeling moet apart worden nagekeken.'
+   };
+  }
+
+  const msg=a.some(
+   q=>E.getal(q.hours)>230
+  )
+   ?' Maximaal 230 uur per kind per maand wordt vergoed.'
+   :'';
+
+  return{
+   status:'ok',
+   amount:z.monthly,
+   description:
+    `Subsidiabele kosten ${fmt2(z.monthlyCost)} per maand. `+
+    `Eerste kind ${z.firstPercentage}%; `+
+    `volgende ${z.otherPercentage}%. `+
+    `Eigen bijdrage op basis van werkelijke kosten: `+
+    `ongeveer ${fmt2(z.actualCost-z.raw)}.${msg}`
+  };
+ }
+
+ if(b==='huur'){
+  const people=rows('room');
+
+  const partnerIn=p
+   ?r('partnerAtAddress')
+   :null;
+
+  if(p&&partnerIn!=='yes'){
+   return{
+    status:'review',
+    description:
+     'Toeslagpartner woont niet zeker op het huuradres. '+
+     'Daarvoor gelden afzonderlijke regels.'
+   };
+  }
+
+  if(
+   people.some(
+    x=>x.legal!=='yes'||x.wholeYear!=='yes'
+   )
+  ){
+   return{
+    status:'review',
+    description:
+     'Verblijfsstatus of een deeljaar-medebewoner vereist '+
+     'een aparte beoordeling.'
+   };
+  }
+
+  if(
+   people.some(
+    x=>
+     Number(x.ageJan1)>=18&&
+     E.getal(x.wealth)>E.C.huur.assetsSingle
+   )
+  ){
+   return{
+    status:'no',
+    amount:0,
+    description:'Een medebewoner heeft te veel vermogen.'
+   };
+  }
+
+  if(
+   people.some(x=>Number(x.ageJan1)<18)
+  ){
+   return{
+    status:'review',
+    description:
+     'Bij een medebewoner die op 1 januari minderjarig '+
+     'was, moet de vermogenstoerekening worden beoordeeld.'
+   };
+  }
+
+  const older=
+   n('age')>=21||
+   (p&&n('partnerAge')>=21)||
+   people.some(x=>Number(x.age)>=21);
+
+  const young=n('age')<21&&!older;
+
+  const capException=r('youngException');
+
+  if(
+   n('age')<21&&
+   (
+    r('age21AtAddress')==='unsure'||
+    capException==='unsure'
+   )
+  ){
+   return{
+    status:'review',
+    description:
+     'Leeftijds- of uitzonderingsregels voor de huurgrens '+
+     'jonger dan 21 jaar vereisen controle.'
+   };
+  }
+
+  if(
+   n('age')<21&&
+   r('age21AtAddress')==='yes'&&
+   !older
+  ){
+   return{
+    status:'review',
+    description:
+     'Er is volgens je antwoord een bewoner van 21+; '+
+     'diens gegevens ontbreken.'
+   };
+  }
+
+  if(
+   young&&capException==='yes'
+  ){
+   return{
+    status:'review',
+    description:
+     'Bij een uitzondering op de jongerenhuurgrens '+
+     'is een aparte beoordeling nodig.'
+   };
+  }
+
+  const peopleCount=
+   1+
+   (p?1:0)+
+   n('minorHouse')+
+   people.length;
+
+  const otherIncome=people.reduce(
+   (t,x)=>
+    t+
+    (
+     x.relation==='child'&&
+     Number(x.ageJan1)<23
+      ?Math.max(
+       0,
+       E.getal(x.income)-
+       E.C.huur.youngChildExemption
+      )
+      :E.getal(x.income)
+    ),0
+  );
+
+  const incomeAll=
+   income+
+   otherIncome+
+   (
+    r('minorHasIncome')==='yes'
+     ?n('minorExcess'):0
+   );
+
+  const z=E.calcHuur({
+   income:Math.max(0,incomeAll),
+   rent:n('rent'),
+   people:peopleCount,
+   under21:young,
+   youngException:false
+  });
+
+  return{
+   status:'ok',
+   amount:z.monthly,
+   description:
+    `Rekenhuur ${fmt2(z.rentUsed)}. `+
+    `Huurdeel ${fmt2(z.a+z.b+z.c)} − `+
+    `inkomenscorrectie ${fmt2(z.correction)}. `+
+    `Huishouden: ${peopleCount} personen.`
+  };
+ }
+}
+
+/* RESULTATEN */
+
+function results(){
+ const month=document.querySelector(
+  '#month option:checked'
+ ).textContent;
+
+ document.getElementById(
+  'result-month'
+ ).textContent=
+  'Indicatieve maandbedragen voor '+month+
+  '. Dit is geen definitieve jaarbeschikking.';
+
+ let sum=0;
+ let uncertain=false;
+
+ const cards=selected().map(b=>{
+  const z=compute(b);
+
+  if(z.status==='ok'){
+   sum+=z.amount;
+  }else if(z.status==='review'){
+   uncertain=true;
+  }
+
+  const text=
+   z.status==='ok'
+    ?(z.amount?'Berekend':'€ 0 volgens berekening')
+    :z.status==='no'
+     ?'Geen recht volgens basischeck'
+     :'Controle nodig';
+
+  return `
+  <div class="resultcard">
+   <div class="hd">
+    <strong>${B[b]}</strong>
+    <span class="chip ${
+     z.status==='ok'?'yes':z.status
+    }">${text}</span>
+   </div>
+
+   <strong class="amount">
+    ${
+     z.status==='ok'
+      ?format(z.amount)+' / maand'
+      :z.status==='no'
+       ?'€ 0'
+       :'—'
+    }
+   </strong>
+
+   <p class="details">
+    ${sanitize(z.description)}
+   </p>
+  </div>`;
+ }).join('');
+
+ document.getElementById('results').innerHTML=`
+  <div class="result-total">
+   <div>
+    ${
+     uncertain
+      ?'Som van alleen de berekenbare toeslagen'
+      :'Geschat totaal per maand'
+    }
+   </div>
+
+   <div class="big">${format(sum)}</div>
+
+   <small>
+    ${
+     uncertain
+      ?'Niet alle toeslagen zijn meegenomen; extra beoordeling is nodig.'
+      :'Bij dezelfde situatie gedurende 12 maanden: indicatief '+
+       format(sum*12)+' per jaar.'
+    }
+   </small>
+  </div>
+  ${cards}`;
+}
+
+/* NAVIGATIE */
+
+function showStep(nextStep){
+ step=nextStep;
+
+ for(const pane of document.querySelectorAll('.page')){
+  pane.hidden=
+   Number(pane.dataset.step)!==step;
+ }
+
+ document.querySelectorAll(
+  '.progress span'
+ ).forEach((el,i)=>{
+  el.classList.toggle('on',i<step);
+ });
+
+ document.getElementById(
+  'steptext'
+ ).textContent=
+  `Stap ${step} van 4 · ${labels[step-1]}`;
+
+ document.getElementById(
+  'dockstep'
+ ).textContent=
+  `Stap ${step} van 4`;
+
+ document.getElementById(
+  'prev'
+ ).hidden=step===1;
+
+ document.getElementById(
+  'next'
+ ).textContent=
+  step===1
+   ?'Verder naar voorwaarden →'
+   :step===2
+    ?'Controleer mijn recht →'
+    :step===3
+     ?'Bereken mijn toeslagen →'
+     :'Opnieuw beginnen';
+
+ boxStyle();
+
+ document.querySelector(
+  '.wizard'
+ ).scrollIntoView({
+  behavior:'auto',
+  block:'start'
+ });
+}
+
+function resetCalculator(){
+ document.querySelectorAll(
+  'input[type="radio"]'
+ ).forEach(x=>x.checked=false);
+
+ document.querySelectorAll(
+  'input[type="text"],input[type="number"]'
+ ).forEach(x=>x.value='');
+
+ // Geen toeslagen automatisch selecteren.
+ document.querySelectorAll(
+  'input[name="benefit"]'
+ ).forEach(x=>x.checked=false);
+
+ document.getElementById(
+  'roomRows'
+ ).innerHTML='';
+
+ document.getElementById(
+  'childRows'
+ ).innerHTML='';
+
+ document.getElementById(
+  'careRows'
+ ).innerHTML='';
+
+ counters={room:0,child:0,care:0};
+
+ makeRow('child');
+ makeRow('care');
+
+ document.getElementById(
+  'minorHouse'
+ ).value='0';
+
+ document.getElementById(
+  'month'
+ ).value='10';
+
+ document.querySelectorAll(
+  '[data-prop="birthday"]'
+ ).forEach(x=>x.value='');
+
+ boxStyle();
+ showStep(1);
+}
+
+function next(){
+ if(step===1){
+  if(!validStart())return;
+  showStep(2);
+  return;
+ }
+
+ if(step===2){
+  if(!validRules())return;
+
+  showElig();
+  showStep(3);
+  return;
+ }
+
+ if(step===3){
+  if(!validDetails())return;
+
+  results();
+  showStep(4);
+  return;
+ }
+
+ resetCalculator();
+}
+
+document.getElementById(
+ 'next'
+).addEventListener('click',next);
+
+document.getElementById(
+ 'prev'
+).addEventListener('click',()=>{
+ showStep(Math.max(1,step-1));
+});
+
+/* DYNAMISCHE RIJEN */
+
+document.addEventListener('click',e=>{
+ const add=e.target.closest('[data-add]');
+
+ if(add){
+  makeRow(add.dataset.add);
+  return;
+ }
+
+ const remove=e.target.closest('[data-remove]');
+
+ if(remove){
+  const row=remove.closest('[data-row]');
+  if(row)row.remove();
+ }
+});
+
+/* WIJZIGINGEN EN VERJAARDAGEN */
+
+document.addEventListener('change',e=>{
+ if(
+  e.target.matches(
+   '[data-row="child"] [data-prop="age"]'
+  )
+ ){
+  updateChildBirthday(
+   e.target.closest('[data-row="child"]')
+  );
+ }
+
+ boxStyle();
+});
+
+document.addEventListener('input',e=>{
+ if(e.target.id==='age'){
+  boxStyle();
+ }
+
+ if(
+  e.target.matches(
+   '[data-row="child"] [data-prop="age"]'
+  )
+ ){
+  updateChildBirthday(
+   e.target.closest('[data-row="child"]')
+  );
+ }
+});
+
+/* START */
+
+makeRow('child');
+makeRow('care');
+
+document.getElementById(
+ 'minorHouse'
+).value='0';
+
+// Geen automatische selectie.
+document.querySelectorAll(
+ 'input[name="benefit"]'
+).forEach(x=>x.checked=false);
+
+boxStyle();
+showStep(1);
+
+})();
+</script>
+</body>
+</html>
